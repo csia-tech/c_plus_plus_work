@@ -1,0 +1,36 @@
+concealment
+	ciphers
+		ROT13
+		base64
+	hash function
+		SHA
+		MD5		
+	encryption
+		AES-256
+		DES or Blowfish
+?	metamorphic engine	?
+		polymorphism
+		obfuscation
+			encryptor/decryptor
+persistance
+	Steganography
+		Blog-Steganography
+		Echo sound or Image bit-plane complexity segmentation
+propagation
+	covert channels
+		TCP call back
+		UDP tunnelling
+	dynamic dns
+		VPS
+		dyndns client
+	port knocking
+		simple TCP series with DNS
+		complex ICMP series
+information
+escalation
+auditing
+
+
+notes:
+# binary->machine code->hexidecimal->op code->mnemonics->assembly->english->source #
+

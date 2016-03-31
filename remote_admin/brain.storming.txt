@@ -1,0 +1,46 @@
+persistance 
+	autostart
+	boot sector
+	infecting processes
+	disabling serivices
+	antivirus
+		on demand
+		real time
+		signature
+		heuristic
+	injection
+propagation
+	dynamic DNS
+	obfuscation
+	removable media
+	AutoPlay
+	top unpatched vulnerabilities
+auditing
+	time stamps
+	security auditing
+	windows access control
+	privilage level
+user mode vs kernel mode
+	device drivers
+	hardware abstraction layer
+executable storage
+encryption
+hashing & cyphers
+persistent vs non-persistent
+protected & real modes
+ring level
+kernel to user mode communication
+hiding
+	hooking
+	kernel object munipulation
+	patched utilities & kernel
+	threat identification
+	PspCidTable
+	virtual memory manager
+	virtual machines
+promiscuous mode
+	sniffers
+key logging
+data theft
+click fraud
+backdoor

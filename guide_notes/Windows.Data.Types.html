@@ -1,0 +1,3559 @@
+<!DOCTYPE html>
+
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head><link rel="canonical" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" /><script type="text/javascript" src="//c.webtrends.com/acs/account/mx643kesn3/js/wt.js"></script>
+    <title>Windows Data Types (Windows)</title>
+
+        
+
+
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/windows/desktop/aa383751(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="NormalizedUrl" content="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="ms.normalizedurl" content="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="VotingContextUrl" content="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751(d=default,l=en-us,v=vs.85).aspx" />
+
+<meta name="MN" content="FB361398-6:32:47 AM" />
+
+<meta name="Search.ShortId" content="aa383751" />
+
+<meta name="ms.shortidmsdn" content="aa383751" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+<meta name="ms.prodver" content="VS.85" />
+
+<meta name="ms.contentlang" content="EN" />
+
+<meta name="ms.lang" content="EN" />
+
+<meta name="ms.loc" content="US" />
+
+<meta name="ms.sitever" content="2016.01.30.1" />
+
+<meta name="ms.assetid" content="4553cafc-450e-4493-a4d4-cb6e2f274d46" />
+
+<meta name="ms.auth" content="0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" data-do-not-move="true">
+        //<![CDATA[
+        var AmbientContext = null;
+
+        (function(){
+            var root = (function(){return this;}).call(null);
+
+            var GetCookie = function(name){
+                var cookies = root.document.cookie ? root.document.cookie.split('; ') : [];
+                for (var i = 0; i < cookies.length; i++) {
+                    var pos = cookies[i].indexOf('=');
+                    if (name === root.decodeURIComponent(cookies[i].slice(0, pos)))
+                    {
+                        var cookie = cookies[i].slice(pos + 1).replace(/\+/g, ' ');
+                        cookie = root.decodeURIComponent(cookie);
+                        return cookie;
+                    }
+                }
+            };
+
+            var JsonDeserialize = function(content) {
+                return root.JSON && root.JSON.parse ? root.JSON.parse(content) : (new Function('return (' + content + ')'))();
+            };
+
+            try {
+                AmbientContext = GetCookie('AmbientContext');
+                AmbientContext = AmbientContext && JsonDeserialize(AmbientContext);
+            } catch(ex) {
+            } finally {
+                AmbientContext = AmbientContext || null;
+            }
+        })();
+        //]]>
+    </script>
+
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" data-do-not-move="true" data-provides="jQuery"></script>
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico" />
+
+
+<link rel="stylesheet" type="text/css" href="https://assets.onestore.ms/cdnfiles/onestorerolling-1601-22000/shell/v3/scss/shell.min.css" /><link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Combined.css?resources=0:ImageSprite,0:TopicResponsive,0:TopicResponsive.MediaQueries,1:CodeSnippet,1:ProgrammingSelector,1:ExpandableCollapsibleArea,0:CommunityContent,1:TopicNotInScope,1:FeedViewerBasic,1:ImageSprite,2:Header,2:sprite,3:Banner.MediaQueries,0:Breadcrumbs,0:Breadcrumbs.MediaQueries,4:breadcrumbs,0:ResponsiveToc,0:ResponsiveToc.MediaQueries,0:LibraryMemberFilter,2:Footer,5:LinkList,5:SelectLocaleFromPopUp,4:WindowsResponsive,0:Tables.MediaQueries;/Areas/Library/Content:0,/Areas/Epx/Content/Css:1,/Areas/Epx/Themes/Windows/Content:2,/Areas/Epx/Shared/Content:3,/Areas/Library/Themes/Windows/content:4,/Areas/Epx/Themes/Base/Content:5&amp;amp;v=1383F2E187550472ABA00E0B7D8C8BB5" /></head>
+<body class="library Chrome">
+    <div id="page">
+
+        
+
+        
+
+    
+
+
+
+
+	      
+        <link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Areas/Epx/Themes/Windows/Content/UhfHeaderResponsive.css?v=635897133117338175" data-do-not-move="true" />
+    <div id="uhf-header-wrapper">
+         
+
+
+
+
+ 
+
+
+
+
+<script data-requires="jQuery" data-provides="uhfHeader" src="https://mem.gfx.ms/meversion?partner=dev-center-win-apps"></script>
+
+
+ 
+
+
+
+<div id="shell-header" class="shell-header shell-responsive" ms.pgarea="header">
+    <div class="shell-header-wrapper">
+        <div class="shell-header-top" data-bi-area="HeaderL0" data-bi-view="L0V1">
+
+            <div class="shell-header-brand" ms.cmpgrp="logo" role="banner">
+                        <a id="srv_shellHeaderMicrosoftLogo" href="https://www.microsoft.com" ms.cmpnm="MicrosoftBrandLogo" ms.title="Microsoft" title="Microsoft" data-bi-name="BrandLogo" tabindex="10">
+            <img src="https://assets.onestore.ms/cdnfiles/onestorerolling-1601-22000/shell/v3/images/logo/microsoft.png" alt="Microsoft" />
+        </a>
+
+            </div>
+
+            <div class="shell-header-nav-wrapper" ms.cmpgrp="nav" role="navigation">
+                <ul class="shell-header-nav" id="srv_shellHeaderNav" data-bi-area="L1" data-bi-view="Hovermenus">
+                        <li class="shell-header-user-mobile-container">
+                        </li>
+                                    <li class="shell-header-dropdown  " data-navcontainer="developer_technologies_NavContainer">
+                                        <div id="developer_technologies" class="shell-header-dropdown-label">
+                                            <a href="javascript:void(0)" role="menu" ms.title="Developer technologies" data-bi-name="DeveloperTechnologies" data-bi-slot="1" tabindex="20">
+                                                Developer technologies
+                                            </a>
+                                        </div>
+
+
+
+
+
+<div class="shell-header-dropdown-content " role="menu">
+                <dl class="shell-header-dropdown-tab  " ms.cmpnm="Developer technologies; Windows">
+
+                            <dt id="developer_tech_windows" class="shell-header-dropdown-tab-label shell-header-L2menu-direct-link-withL3">
+                                <a href="https://dev.windows.com/en-us" role="menuitem" ms.title="Windows" tabindex="20" data-bi-name="DeveloperTech_Windows">Windows</a>
+                                <i class="shell-icon-dropdown"></i>
+                            </dt>
+                            <dd class="shell-header-dropdown-tab-content" data-col="0">
+
+
+
+    <ul class="shell-header-dropdown-tab-list">
+                    <li id="developer_tech_windows_windows_apps">
+                        <a href="https://dev.windows.com/en-us/windows-apps " class="shell-l3-list-item" role="link" ms.title="Windows apps" tabindex="20" data-bi-name="DeveloperTech_Windows_WindowsApps">
+                            Windows apps
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_classic_desktop">
+                        <a href="https://dev.windows.com/en-us/desktop" class="shell-l3-list-item" role="link" ms.title="Classic desktop" tabindex="20" data-bi-name="DeveloperTech_Windows_ClassicDesktop">
+                            Classic desktop
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_IoT">
+                        <a href="https://dev.windows.com/en-us/iot" class="shell-l3-list-item" role="link" ms.title="Internet of Things" tabindex="20" data-bi-name="DeveloperTech_Windows_IoT">
+                            Internet of Things
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_games">
+                        <a href="https://dev.windows.com/en-us/games" class="shell-l3-list-item" role="link" ms.title="Games" tabindex="20" data-bi-name="DeveloperTech_Games">
+                            Games
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_edge">
+                        <a href="https://dev.windows.com/en-us/microsoft-edge" class="shell-l3-list-item" role="link" ms.title="Microsoft Edge" tabindex="20" data-bi-name="DeveloperTech_Windows_Edge">
+                            Microsoft Edge
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_hardware">
+                        <a href="https://msdn.microsoft.com/windows/hardware/gg236587.aspx" class="shell-l3-list-item" role="link" ms.title="Hardware" tabindex="20" data-bi-name="DeveloperTech_Hardware">
+                            Hardware
+                        </a>
+                    </li>
+
+    </ul>
+
+
+
+                            </dd>
+
+                </dl>
+                <dl class="shell-header-dropdown-tab  " ms.cmpnm="Developer technologies; Services">
+
+                            <dt id="developer_tech_services" class="shell-header-dropdown-tab-label">
+                                <a href="javascript:void(0)" role="menuitem" ms.title="Services" ms.interactiontype="14" tabindex="20" data-bi-dnt="">
+                                    Services
+                                    <i class="shell-icon-dropdown facing-right"></i>
+                                </a>
+                            </dt>
+                            <dd class="shell-header-dropdown-tab-content" data-col="0">
+
+
+
+    <ul class="shell-header-dropdown-tab-list">
+                    <li id="developer_tech_windows_office 365">
+                        <a href="http://dev.office.com/" class="shell-l3-list-item" role="link" ms.title="Office 365" tabindex="20" data-bi-name="DeveloperTech_Windows_Office365">
+                            Office 365
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_one_drive">
+                        <a href="https://dev.onedrive.com/ " class="shell-l3-list-item" role="link" ms.title="OneDrive" tabindex="20" data-bi-name="DeveloperTech_Windows_OneDrive">
+                            OneDrive
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_skype">
+                        <a href="http://www.skype.com/developer/ " class="shell-l3-list-item" role="link" ms.title="Skype" tabindex="20" data-bi-name="DeveloperTech_Windows_Skype">
+                            Skype
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_bing">
+                        <a href="http://www.bing.com/dev " class="shell-l3-list-item" role="link" ms.title="Bing" tabindex="20" data-bi-name="DeveloperTech_Windows_Bing">
+                            Bing
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_cortana">
+                        <a href="https://dev.windows.com/en-us/cortana " class="shell-l3-list-item" role="link" ms.title="Cortana" tabindex="20" data-bi-name="DeveloperTech_Windows_Cortana">
+                            Cortana
+                        </a>
+                    </li>
+
+    </ul>
+
+
+
+                            </dd>
+
+                </dl>
+                <dl class="shell-header-dropdown-tab  " ms.cmpnm="Developer technologies; Visual Studio">
+
+                            <dt id="developer_tech_visual_studio" class="shell-header-dropdown-tab-label shell-header-L2menu-direct-link-withL3">
+                                <a href="https://www.visualstudio.com/" role="menuitem" ms.title="Visual Studio" tabindex="20" data-bi-name="DeveloperTech_VisualStudio">Visual Studio</a>
+                                <i class="shell-icon-dropdown"></i>
+                            </dt>
+                            <dd class="shell-header-dropdown-tab-content" data-col="0">
+
+
+
+    <ul class="shell-header-dropdown-tab-list">
+                    <li id="developer_tech_windows_visual_studio_2015">
+                        <a href="https://www.visualstudio.com/features/ " class="shell-l3-list-item" role="link" ms.title="Visual Studio 2015" tabindex="20" data-bi-name="DeveloperTech_Windows_VisualStudio2015">
+                            Visual Studio 2015
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_visual_studio_online">
+                        <a href="https://www.visualstudio.com/products/what-is-visual-studio-online-vs " class="shell-l3-list-item" role="link" ms.title="Visual Studio Online" tabindex="20" data-bi-name="DeveloperTech_Windows_VisualStudioOnline">
+                            Visual Studio Online
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_visual_studio_code">
+                        <a href="https://code.visualstudio.com/docs " class="shell-l3-list-item" role="link" ms.title="Visual Studio Code" tabindex="20" data-bi-name="DeveloperTech_Windows_VisualStudioCode">
+                            Visual Studio Code
+                        </a>
+                    </li>
+
+    </ul>
+
+
+
+                            </dd>
+
+                </dl>
+                <dl class="shell-header-dropdown-tab  " ms.cmpnm="Developer technologies; MSDN">
+
+                            <dt id="developer_tech_msdn" class="shell-header-dropdown-tab-label shell-header-L2menu-direct-link-withL3">
+                                <a href="https://msdn.microsoft.com/" role="menuitem" ms.title="MSDN" tabindex="20" data-bi-name="DeveloperTech_MSDN">MSDN</a>
+                                <i class="shell-icon-dropdown"></i>
+                            </dt>
+                            <dd class="shell-header-dropdown-tab-content" data-col="0">
+
+
+
+    <ul class="shell-header-dropdown-tab-list">
+                    <li id="developer_tech_windows_subscription">
+                        <a href="https://msdn.microsoft.com/subscriptions" class="shell-l3-list-item" role="link" ms.title="Subscription" tabindex="20" data-bi-name="DeveloperTech_Windows_Subscription">
+                            Subscription
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_community">
+                        <a href="https://social.msdn.microsoft.com/Forums/" class="shell-l3-list-item" role="link" ms.title="Community" tabindex="20" data-bi-name="DeveloperTech_Windows_Community">
+                            Community
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_blogs">
+                        <a href="http://blogs.msdn.com/b/developer-tools/" class="shell-l3-list-item" role="link" ms.title="Blogs" tabindex="20" data-bi-name="DeveloperTech_Windows_Blogs">
+                            Blogs
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_magazine">
+                        <a href="https://msdn.microsoft.com/magazine/dd767791" class="shell-l3-list-item" role="link" ms.title="Magazine" tabindex="20" data-bi-name="DeveloperTech_Windows_Magazine">
+                            Magazine
+                        </a>
+                    </li>
+
+    </ul>
+
+
+
+                            </dd>
+
+                </dl>
+                <dl class="shell-header-dropdown-tab  " ms.cmpnm="Developer technologies; Office">
+
+                            <dt id="developer_tech_office" class="shell-header-dropdown-tab-label shell-header-L2menu-direct-link-withL3">
+                                <a href="https://dev.office.com/" role="menuitem" ms.title="Office" tabindex="20" data-bi-name="DeveloperTech_Office">Office</a>
+                                <i class="shell-icon-dropdown"></i>
+                            </dt>
+                            <dd class="shell-header-dropdown-tab-content" data-col="0">
+
+
+
+    <ul class="shell-header-dropdown-tab-list">
+                    <li id="developer_tech_windows_office365_apis">
+                        <a href="http://dev.office.com/getting-started/office365apis" class="shell-l3-list-item" role="link" ms.title="Office 365 APIs" tabindex="20" data-bi-name="DeveloperTech_Windows_Office365APIs">
+                            Office 365 APIs
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_office_addins">
+                        <a href="http://dev.office.com/getting-started/addins" class="shell-l3-list-item" role="link" ms.title="Office add-ins" tabindex="20" data-bi-name="DeveloperTech_Windows_OfficeAddIns">
+                            Office add-ins
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_sharepoint_addins">
+                        <a href="https://msdn.microsoft.com/library/office/fp179930.aspx" class="shell-l3-list-item" role="link" ms.title="SharePoint add-ins" tabindex="20" data-bi-name="DeveloperTech_Windows_SharePointAddIns">
+                            SharePoint add-ins
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_office365_for_iOS">
+                        <a href="http://dev.office.com/ios" class="shell-l3-list-item" role="link" ms.title="Office 365 for iOS" tabindex="20" data-bi-name="DeveloperTech_Windows_Office365ForiOS">
+                            Office 365 for iOS
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_office365_for_android">
+                        <a href="http://dev.office.com/Android" class="shell-l3-list-item" role="link" ms.title="Office 365 for Android" tabindex="20" data-bi-name="DeveloperTech_Windows_Office365ForAndroid">
+                            Office 365 for Android
+                        </a>
+                    </li>
+
+    </ul>
+
+
+
+                            </dd>
+
+                </dl>
+                <dl class="shell-header-dropdown-tab  " ms.cmpnm="Developer technologies; Azure">
+
+                            <dt id="L2_Azure" class="shell-header-dropdown-tab-label shell-header-L2menu-direct-link-withL3">
+                                <a href="https://azure.microsoft.com/en-us/" role="menuitem" ms.title="Azure" tabindex="20" data-bi-name="DeveloperTech_Azure">Azure</a>
+                                <i class="shell-icon-dropdown"></i>
+                            </dt>
+                            <dd class="shell-header-dropdown-tab-content" data-col="0">
+
+
+
+    <ul class="shell-header-dropdown-tab-list">
+                    <li id="developer_tech_windows_web_apps">
+                        <a href="https://azure.microsoft.com/en-us/documentation/scenarios/web-app/" class="shell-l3-list-item" role="link" ms.title="Web apps" tabindex="20" data-bi-name="DeveloperTech_Windows_WebApps">
+                            Web apps
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_mobile_apps">
+                        <a href="https://azure.microsoft.com/en-us/documentation/scenarios/mobile-app/ " class="shell-l3-list-item" role="link" ms.title=" Subscription" tabindex="20" data-bi-name="DeveloperTech_Windows_MobileApps">
+                             Subscription
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_virtual_machines">
+                        <a href="https://azure.microsoft.com/en-us/documentation/scenarios/virtual-machines/ " class="shell-l3-list-item" role="link" ms.title="Virtual machines" tabindex="20" data-bi-name="DeveloperTech_Windows_VirtualMachines">
+                            Virtual machines
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_data_analytics">
+                        <a href="https://azure.microsoft.com/en-us/documentation/scenarios/data-analytics/ " class="shell-l3-list-item" role="link" ms.title="Data analytics" tabindex="20" data-bi-name="DeveloperTech_Windows_DataAnalytics">
+                            Data analytics
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_high_performance_computing">
+                        <a href="https://azure.microsoft.com/en-us/documentation/scenarios/high-performance-computing/ " class="shell-l3-list-item" role="link" ms.title="High performance computing" tabindex="20" data-bi-name="DeveloperTech_Windows_HighPerformanceComputing">
+                            High performance computing
+                        </a>
+                    </li>
+                    <li id="developer_tech_windows_iot">
+                        <a href="https://azure.microsoft.com/en-us/documentation/scenarios/internet-of-things/ " class="shell-l3-list-item" role="link" ms.title="Internet of Things" tabindex="20" data-bi-name="DeveloperTech_Windows_IoT">
+                            Internet of Things
+                        </a>
+                    </li>
+
+    </ul>
+
+
+
+                            </dd>
+
+                </dl>
+
+</div>
+                                    </li>
+
+                </ul>
+            </div>
+                <div class="shell-header-user-container">
+                    <dl class="shell-header-user">
+                        <dt>
+                            <span id="meControl">
+                                <div class="msame_Header" tabindex="60" style="display: inline-block; height: 48px; font-size: 14px; border: 1px solid transparent; border-bottom-style: none; width: 100%;">
+                                    <div class="msame_Header_name" style="line-height: 48px; max-width: 160px; display: inline-block; vertical-align: top; font-size: 86%; color: #505050; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; word-break: break-all">Sign in </div>
+                                </div>
+                            </span>
+                        </dt>
+                    </dl>
+                </div>
+            
+            <div class="shell-header-nav-toggle " ms.cmpgrp="nav">
+                <button class="shell-header-toggle-menu" ms.cmpnm="mobile global nav toggle button" ms.title="Toggle menu" title="Toggle Menu" type="button" data-bi-name="Toggle Menu" tabindex="55">
+                    <i class="shell-icon-menu"></i>
+                </button>
+            </div>
+
+            <ul class="shell-header-toggle" ms.cmpgrp="header actions">
+                    <li>
+                        <button class="shell-header-toggle-search" type="button" data-bi-name="Toggle Search Icon" ms.title="search toggle" title="Toggle Search" tabindex="45">
+                            <i class="shell-icon-search"></i>
+                        </button>
+                    </li>
+                            </ul>
+
+            <div class="shell-header-actions" ms.cmpgrp="header actions">
+                    <form id="srv_shellHeaderSearchForm" class="shell-search" role="search" action="https://social.msdn.microsoft.com/search/windows" method="GET" autocomplete="off" onsubmit=" return window.msCommonShell.onSearch(this) " ms.cmpnm="search">
+                        <div class="shell-search-wrapper">
+                            <label for="cli_shellHeaderSearchInput" class="sr-only">Search Microsoft</label>
+                            <input id="cli_shellHeaderSearchInput" type="search" title="" name="query" data-bi-dnt="" placeholder="" maxlength="200" tabindex="30" />
+
+                                <input type="hidden" name="Refinement" data-bi-dnt="" value="183" />
+
+                            <button type="submit" title="Search" data-bi-dnt="" tabindex="40">
+                                <i class="shell-icon-search"></i>
+                                <span class="sr-only">Search</span>
+                            </button>
+                            <div id="cli_searchSuggestionsContainer" class="shell-search-dropdown-container">
+                                <div class="search-dropdown">
+                                    <div class="dropdown-item">
+                                        <ul id="cli_searchSuggestionsResults" data-bi-name="Search Suggestions" data-bi-source="UnifiedSearch" ms.cmpgrp="search suggestions"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="fixed-global-nav-buffer"></div>
+
+
+
+
+
+
+
+
+<div class="shell-category-header cat-theme-blue" ms.pgarea="categoryheader">
+    
+    <div role="navigation" aria-label="Category level navigation" class="shell-category-nav" ms.cmpgrp="cat nav" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="C0">
+        <div class="c-nav-pagination c-nav-pagination-prev">
+            <i class="shell-icon-dropdown facing-left"></i>
+        </div>
+        <ul class="shell-category-top-level shell-category-brand">
+            <li class="c-logo-item">
+                        <a id="shell-cat-header-logo" class="c-logo c-top-nav-link" href="https://dev.windows.com/en-us" title="" ms.title="Windows Dev Center" data-bi-name="Category logo" tabindex="70">
+                            <span class="logo-text-label">Windows Dev Center</span>
+                        </a>
+                        <a id="shell-cat-header-logo-mobile" class="c-logo-mobile c-top-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Windows Dev Center" ms.interactiontype="14" data-bi-name="Mobile category logo" tabindex="70">
+                            <span class="logo-text-label">Windows Dev Center</span>
+                            <i class="shell-icon-dropdown"></i>
+                        </a>
+                <ul class="c-nav-dropdown-menu" role="menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="C1">
+
+
+
+        <li class="c-top-nav-item">
+            <a id="explore-mobile" class="c-top-nav-link c-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Explore" role="menu" ms.interactiontype="14" data-bi-name="Explore" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                    <span>
+                        Explore
+                        <i class="shell-icon-dropdown"></i>
+                    </span>
+                </a>
+                <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Explore-C2" ms.cmpnm="Explore" role="menu">
+
+
+
+
+        <li class="c-nav-item ">
+            <a id="explore_whatsnewwin10-mobile" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/getstarted/whats-new-windows-10" ms.title="What’s new for Windows 10" role="link" data-bi-name="Explore_WhatsNewWin10" data-bi-slot="1" tabindex="70">
+                <span>
+                    What’s new for Windows 10
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_guideuwpapps-mobile" class="c-nav-dropdown-item c-nav-link " href="https://msdn.microsoft.com/library/windows/apps/xaml/dn894631.aspx" ms.title="Intro to Universal Windows Platform" role="link" data-bi-name="Explore_GuideUwpApps" data-bi-slot="2" tabindex="70">
+                <span>
+                    Intro to Universal Windows Platform
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_windowstrainingseries-mobile" class="c-nav-dropdown-item c-nav-link " href="http://go.microsoft.com/fwlink/p/?LinkId=626455" ms.title="Windows 10 training series" role="link" data-bi-name="Explore_WindowsTrainingSeries" data-bi-slot="3" tabindex="70">
+                <span>
+                    Windows 10 training series
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_winandstoretrends-mobile" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/windows-trends" ms.title="Windows and Store trends" role="link" data-bi-name="Explore_WinAndStoreTrends" data-bi-slot="4" tabindex="70">
+                <span>
+                    Windows and Store trends
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_cortana-mobile" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/cortana" ms.title="Cortana for developers" role="link" data-bi-name="Explore_Cortana" data-bi-slot="5" tabindex="70">
+                <span>
+                    Cortana for developers
+                </span>
+            </a>
+
+
+
+        </li>
+
+
+            </ul>
+                        </li>
+        <li class="c-top-nav-item">
+            <a id="Docs-mobile" class="c-top-nav-link c-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Docs" role="menu" ms.interactiontype="14" data-bi-name="Docs" data-bi-slot="2" data-show-cta="True" tabindex="70">
+                    <span>
+                        Docs
+                        <i class="shell-icon-dropdown"></i>
+                    </span>
+                </a>
+                <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Docs-C2" ms.cmpnm="Docs" role="menu">
+
+
+
+
+        <li class="c-nav-item c-nav-link-with-dropdown">
+            <a id="docs_windowsapps-mobile" class="c-nav-dropdown-item c-nav-link c-top-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Windows apps" role="menuitem" data-bi-name="Docs_WindowsApps" data-bi-slot="1" tabindex="70">
+                <span>
+                    Windows apps
+                        <i class="shell-icon-dropdown"></i>
+                </span>
+            </a>
+
+
+
+                    <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Docs_WindowsApps-C3" ms.cmpnm="Windows apps" role="menu">
+
+
+
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/getstarted" ms.title="Get started" role="link" data-bi-name="Docs_WindowsApps_GetStarted" data-bi-slot="1">
+                        <span>
+                            Get started
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/design" ms.title="Design" role="link" data-bi-name="Docs_WindowsApps_Design" data-bi-slot="2">
+                        <span>
+                            Design
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/develop" ms.title="Develop" role="link" data-bi-name="Docs_WindowsApps_Develop" data-bi-slot="3">
+                        <span>
+                            Develop
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/publish" ms.title="Publish" role="link" data-bi-name="Docs_WindowsApps_Publish" data-bi-slot="4">
+                        <span>
+                            Publish
+                        </span>
+                    </a>
+            </li>
+
+
+
+                    </ul>
+        </li>
+        <li class="c-nav-item c-nav-link-with-dropdown">
+            <a id="docs_Games-mobile" class="c-nav-dropdown-item c-nav-link c-top-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Games" role="menuitem" data-bi-name="Docs_Games" data-bi-slot="2" tabindex="70">
+                <span>
+                    Games
+                        <i class="shell-icon-dropdown"></i>
+                </span>
+            </a>
+
+
+
+                    <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Docs_Games-C3" ms.cmpnm="Games" role="menu">
+
+
+
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/games/getstarted" ms.title="Get started" role="link" data-bi-name="Docs_Games_GetStarted" data-bi-slot="1">
+                        <span>
+                            Get started
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/games/design" ms.title="UI design" role="link" data-bi-name="Docs_Games_Design" data-bi-slot="2">
+                        <span>
+                            UI design
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/games/develop" ms.title="Develop" role="link" data-bi-name="Docs_Games_Develop" data-bi-slot="3">
+                        <span>
+                            Develop
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/games/publish" ms.title="Publish" role="link" data-bi-name="Docs_Games_Publish" data-bi-slot="4">
+                        <span>
+                            Publish
+                        </span>
+                    </a>
+            </li>
+
+
+
+                    </ul>
+        </li>
+        <li class="c-nav-item c-nav-link-with-dropdown">
+            <a id="docs_desktop-apps-mobile" class="c-nav-dropdown-item c-nav-link c-top-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Classic desktop" role="menuitem" data-bi-name="Docs_DesktopApps" data-bi-slot="3" tabindex="70">
+                <span>
+                    Classic desktop
+                        <i class="shell-icon-dropdown"></i>
+                </span>
+            </a>
+
+
+
+                    <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Docs_DesktopApps-C3" ms.cmpnm="Classic desktop" role="menu">
+
+
+
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/desktop/getstarted" ms.title="Get started" role="link" data-bi-name="Docs_DesktopApps_GetStarted" data-bi-slot="1">
+                        <span>
+                            Get started
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/desktop/design" ms.title="Design" role="link" data-bi-name="Docs_DesktopApps_Design" data-bi-slot="2">
+                        <span>
+                            Design
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/desktop/develop" ms.title="Develop" role="link" data-bi-name="Docs_DesktopApps_Develop" data-bi-slot="3">
+                        <span>
+                            Develop
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="https://dev.windows.com/en-us/desktop/test-deploy" ms.title="Test and deploy" role="link" data-bi-name="Docs_DesktopApps_TestDeploy" data-bi-slot="4">
+                        <span>
+                            Test and deploy
+                        </span>
+                    </a>
+            </li>
+
+
+
+                    </ul>
+        </li>
+        <li class="c-nav-item c-nav-link-with-dropdown">
+            <a id="docs_win-iot-mobile" class="c-nav-dropdown-item c-nav-link c-top-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Windows IoT" role="menuitem" data-bi-name="Docs_WinIoT" data-bi-slot="4" tabindex="70">
+                <span>
+                    Windows IoT
+                        <i class="shell-icon-dropdown"></i>
+                </span>
+            </a>
+
+
+
+                    <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Docs_WinIoT-C3" ms.cmpnm="Windows IoT" role="menu">
+
+
+
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="http://go.microsoft.com/fwlink/p/?linkid=532957" ms.title="Get started" role="link" data-bi-name="Docs_WinIoT_GetStarted" data-bi-slot="1">
+                        <span>
+                            Get started
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                    <a class="c-nav-dropdown-item c-nav-link" href="http://go.microsoft.com/fwlink/p/?linkid=532961" ms.title="Develop" role="link" data-bi-name="Docs_WinIoT_Develop" data-bi-slot="2">
+                        <span>
+                            Develop
+                        </span>
+                    </a>
+            </li>
+            <li class="c-nav-item">
+                        <a class="c-nav-dropdown-item c-nav-link" href="http://go.microsoft.com/fwlink/p/?linkid=532977" ms.title="Project gallery " role="link" data-bi-name="Docs_WinIoT_LearnMore_IoTProjectGallery" data-bi-slot="3">
+                            <span>
+                                Project gallery 
+                            </span>
+                        </a>
+            </li>
+
+
+
+                    </ul>
+        </li>
+        <li class="c-nav-item ">
+            <a id="docs_edge-mobile" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/microsoft-edge" ms.title="Microsoft Edge" role="link" data-bi-name="Docs_Edge" data-bi-slot="5" tabindex="70">
+                <span>
+                    Microsoft Edge
+                </span>
+            </a>
+
+
+
+        </li>
+
+
+            </ul>
+                        </li>
+        <li class="c-top-nav-item">
+                <a id="downloads-mobile" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/downloads" ms.title="Downloads" role="menuitem" data-bi-name="Downloads" data-bi-slot="3" data-show-cta="True" tabindex="70">
+                    <span>
+                        Downloads
+                    </span>
+                </a>
+            </li>
+        <li class="c-top-nav-item">
+                <a id="samples-mobile" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/samples" ms.title="Samples" role="menuitem" data-bi-name="Samples" data-bi-slot="4" data-show-cta="True" tabindex="70">
+                    <span>
+                        Samples
+                    </span>
+                </a>
+            </li>
+        <li class="c-top-nav-item">
+                <a id="support-mobile" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/support" ms.title="Support" role="menuitem" data-bi-name="Support" data-bi-slot="5" data-show-cta="True" tabindex="70">
+                    <span>
+                        Support
+                    </span>
+                </a>
+            </li>
+        <li class="c-top-nav-item">
+                <a id="programs-mobile" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/programs" ms.title="Programs" role="menuitem" data-bi-name="Programs" data-bi-slot="6" data-show-cta="True" tabindex="70">
+                    <span>
+                        Programs
+                    </span>
+                </a>
+            </li>
+        <li class="c-top-nav-item">
+                <a id="dashboard-mobile" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/overview?from=UHF" ms.title="Dashboard" role="menuitem" data-bi-name="Dashboard" data-bi-slot="7" data-show-cta="True" tabindex="70">
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+            </li>
+
+                </ul>
+            </li>
+
+        </ul>
+        <ul class="shell-category-top-level shell-category-nav-wrapper" role="menu" data-bi-area="CategoryMenuItems-Windows Dev Center" data-bi-view="C1">
+
+
+
+        <li class="c-top-nav-item">
+            <a id="explore" class="c-top-nav-link c-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Explore" role="menu" ms.interactiontype="14" data-bi-name="Explore" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                    <span>
+                        Explore
+                        <i class="shell-icon-dropdown"></i>
+                    </span>
+                </a>
+                <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Explore-C2" ms.cmpnm="Explore" role="menu">
+
+
+
+
+        <li class="c-nav-item ">
+            <a id="explore_whatsnewwin10" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/getstarted/whats-new-windows-10" ms.title="What’s new for Windows 10" role="link" data-bi-name="Explore_WhatsNewWin10" data-bi-slot="1" tabindex="70">
+                <span>
+                    What’s new for Windows 10
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_guideuwpapps" class="c-nav-dropdown-item c-nav-link " href="https://msdn.microsoft.com/library/windows/apps/xaml/dn894631.aspx" ms.title="Intro to Universal Windows Platform" role="link" data-bi-name="Explore_GuideUwpApps" data-bi-slot="2" tabindex="70">
+                <span>
+                    Intro to Universal Windows Platform
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_windowstrainingseries" class="c-nav-dropdown-item c-nav-link " href="http://go.microsoft.com/fwlink/p/?LinkId=626455" ms.title="Windows 10 training series" role="link" data-bi-name="Explore_WindowsTrainingSeries" data-bi-slot="3" tabindex="70">
+                <span>
+                    Windows 10 training series
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_winandstoretrends" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/windows-trends" ms.title="Windows and Store trends" role="link" data-bi-name="Explore_WinAndStoreTrends" data-bi-slot="4" tabindex="70">
+                <span>
+                    Windows and Store trends
+                </span>
+            </a>
+
+
+
+        </li>
+        <li class="c-nav-item ">
+            <a id="explore_cortana" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/cortana" ms.title="Cortana for developers" role="link" data-bi-name="Explore_Cortana" data-bi-slot="5" tabindex="70">
+                <span>
+                    Cortana for developers
+                </span>
+            </a>
+
+
+
+        </li>
+
+
+            </ul>
+                        </li>
+        <li class="c-top-nav-item">
+            <a id="Docs" class="c-top-nav-link c-nav-link c-nav-dropdown" href="javascript:void(0);" ms.title="Docs" role="menu" ms.interactiontype="14" data-bi-name="Docs" data-bi-slot="2" data-show-cta="True" tabindex="70">
+                    <span>
+                        Docs
+                        <i class="shell-icon-dropdown"></i>
+                    </span>
+                </a>
+                <ul class="c-nav-dropdown-menu" data-bi-area="CategoryHeader-Windows Dev Center" data-bi-view="Docs-C2" ms.cmpnm="Docs" role="menu">
+
+
+
+
+        <li class="c-nav-item-with-dropdown c-nav-link-with-dropdown">
+            <a id="docs_windowsapps" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/windows-apps" ms.title="Windows apps" role="menuitem" data-bi-name="Docs_WindowsApps" data-bi-slot="1" tabindex="70">
+                <span>
+                    Windows apps
+                </span>
+            </a>
+
+                <i class="shell-icon-dropdown"></i>
+
+
+                    <div class="c-nav-dropdown-tab-content c-nav-multicolumn" data-col="4">
+
+
+
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/getstarted" role="menuitem" ms.title="Get started" data-bi-name="Docs_WindowsApps_GetStarted">
+                                    Get started
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_windowsapps_getstarted_whatsuniversal">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/dn726767.aspx" role="menuitem" ms.title="What’s a universal Windows app" data-bi-name="Docs_WindowsApps_GetStarted_WhatsUniversal">
+                                What’s a universal Windows app
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_getstarted_getsetup">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/dn726766.aspx" role="menuitem" ms.title="Get set up" data-bi-name="Docs_WindowsApps_GetStarted_GetSetUp">
+                                Get set up
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_getstarted_signup">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/bg124287.aspx" role="menuitem" ms.title="Sign up" data-bi-name="Docs_WindowsApps_GetStarted_SignUp">
+                                Sign up
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_getstarted_firstapp">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/bg124288.aspx" role="menuitem" ms.title="Your first app" data-bi-name="Docs_WindowsApps_GetStarted_FirstApp">
+                                Your first app
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_new">
+                            <a href="https://dev.windows.com/en-us/getstarted/whats-new-windows-10" role="menuitem" ms.title="New for Windows 10" data-bi-name="Docs_WindowsApps_GetStarted">
+                                New for Windows 10
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/design" role="menuitem" ms.title="Design" data-bi-name="Docs_WindowsApps_Design">
+                                    Design
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_windowsapps_design_basics">
+                            <a href="https://dev.windows.com/en-us/design/design-basics" role="menuitem" ms.title="Basics" data-bi-name="Docs_WindowsApps_Design_Basics">
+                                Basics
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_design_guidelines">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/hh465424.aspx" role="menuitem" ms.title="Guidelines" data-bi-name="Docs_WindowsApps_Design_Guidelines">
+                                Guidelines
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_design_downloads">
+                            <a href="https://dev.windows.com/en-us/design/assets" role="menuitem" ms.title="Downloads" data-bi-name="Docs_WindowsApps_Design_Downloads">
+                                Downloads
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/develop" role="menuitem" ms.title="Develop" data-bi-name="Docs_WindowsApps_Develop">
+                                    Develop
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_windowsapps_develop_how-to-guides">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/xaml/mt244352.aspx" role="menuitem" ms.title="How-to guides" data-bi-name="Docs_WindowsApps_Develop_HowToGuides">
+                                How-to guides
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_develop_api_reference">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/bg124285.aspx" role="menuitem" ms.title="API reference" data-bi-name="Docs_WindowsApps_Develop_API_Reference">
+                                API reference
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_develop_services">
+                            <a href="https://dev.windows.com/en-us/develop/microsoft-services" role="menuitem" ms.title="Services" data-bi-name="Docs_WindowsApps_Develop_Services">
+                                Services
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_develop_windows-8.x-guides">
+                            <a href="https://msdn.microsoft.com/en-us/library/windows/apps/mt244353.aspx" role="menuitem" ms.title="Windows 8.x guides" data-bi-name="Docs_WindowsApps_Develop_Windows8.xGuides">
+                                Windows 8.x guides
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_develop_windows-phone-silverlight-guides">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/ff402535(v=vs.105).aspx" role="menuitem" ms.title="Windows Phone Silverlight 8.x Guides" data-bi-name="Docs_WindowsApps_Develop_WindowsPhoneSilverlightGuides">
+                                Windows Phone Silverlight 8.x Guides
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/publish" role="menuitem" ms.title="Publish" data-bi-name="Docs_WindowsApps_Publish">
+                                    Publish
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_windowsapps_publish_submit-your-app">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/hh694062.aspx " role="menuitem" ms.title="Submit your app" data-bi-name="Docs_WindowsApps_Publish_SubmitYourApp">
+                                Submit your app
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_publish_promote_and_engage">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/mt148526.aspx" role="menuitem" ms.title="Promote and engage" data-bi-name="Docs_WindowsApps_Publish_PromoteEngage">
+                                Promote and engage
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_publish_view-analytics">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/mt148522.aspx" role="menuitem" ms.title="View analytics" data-bi-name="Docs_WindowsApps_Publish_ViewAnalytics">
+                                View analytics
+                            </a>
+                        </li>
+                        <li id="docs_windowsapps_publish_store-policies">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/dn764944.aspx " role="menuitem" ms.title="Store Policies" data-bi-name="Docs_WindowsApps_Publish_StorePolicies">
+                                Store Policies
+                            </a>
+                        </li>
+
+            </ul>
+
+
+
+                    </div>
+        </li>
+        <li class="c-nav-item-with-dropdown c-nav-link-with-dropdown">
+            <a id="docs_Games" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/games" ms.title="Games" role="menuitem" data-bi-name="Docs_Games" data-bi-slot="2" tabindex="70">
+                <span>
+                    Games
+                </span>
+            </a>
+
+                <i class="shell-icon-dropdown"></i>
+
+
+                    <div class="c-nav-dropdown-tab-content c-nav-multicolumn" data-col="4">
+
+
+
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/games/getstarted" role="menuitem" ms.title="Get started" data-bi-name="Docs_Games_GetStarted">
+                                    Get started
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_games_getstarted_get-set-up">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/dn726766.aspx" role="menuitem" ms.title="Get set up" data-bi-name="Docs_Games_GetStarted_GetSetUp">
+                                Get set up
+                            </a>
+                        </li>
+                        <li id="docs_games_getstarted_sign-up">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/bg124287.aspx" role="menuitem" ms.title="Sign up" data-bi-name="Docs_Games_GetStarted_SignUp">
+                                Sign up
+                            </a>
+                        </li>
+                        <li id="docs_games_getstarted_choose-tech">
+                            <a href="https://dev.windows.com/en-us/games/technology" role="menuitem" ms.title="Choose a technology" data-bi-name="Docs_Games__GetStarted_ChooseTech">
+                                Choose a technology
+                            </a>
+                        </li>
+                        <li id="docs_games_getstarted_uwp">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/mt282476.aspx" role="menuitem" ms.title="Games on the Universal Windows Platform" data-bi-name="Docs_Games_GetStarted_UWP">
+                                Games on the Universal Windows Platform
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/games/design" role="menuitem" ms.title="UI design" data-bi-name="Docs_Games_Design">
+                                    UI design
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_games_design_basics">
+                            <a href="https://dev.windows.com/en-us/design/design-basics" role="menuitem" ms.title="Basics" data-bi-name="Docs_Games_Design_Basics">
+                                Basics
+                            </a>
+                        </li>
+                        <li id="docs_games_design_guidelines">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/hh465424.aspx" role="menuitem" ms.title="Guidelines" data-bi-name="Docs_Games_Design_Guidelines">
+                                Guidelines
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/games/develop" role="menuitem" ms.title="Develop" data-bi-name="Docs_Games_Develop">
+                                    Develop
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_games_develop_devguide">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/mt592659.aspx" role="menuitem" ms.title="Games dev guide" data-bi-name="Docs_Games_Develop_DevGuide">
+                                Games dev guide
+                            </a>
+                        </li>
+                        <li id="docs_games_develop_direct3d-12-graphics">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/dn903821.aspx" role="menuitem" ms.title="Direct3D 12" data-bi-name="Docs_Games_Develop_Direct3D12Graphics ">
+                                Direct3D 12
+                            </a>
+                        </li>
+                        <li id="docs_games_develop_winapireference">
+                            <a href="https://msdn.microsoft.com/library/windows/apps/br211369.aspx" role="menuitem" ms.title="Windows API reference " data-bi-name="Docs_games_Develop_WinAPIReference ">
+                                Windows API reference 
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/games/publish" role="menuitem" ms.title="Publish" data-bi-name="Docs_Games_Publish">
+                                    Publish
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_games_publish_publish-win-apps">
+                            <a href="https://dev.windows.com/en-us/publish" role="menuitem" ms.title="Publish Windows apps" data-bi-name="Docs_Games_Publish_PublishWinApps">
+                                Publish Windows apps
+                            </a>
+                        </li>
+                        <li id="docs_games_publish_id@xbox">
+                            <a href="http://www.xbox.com/Developers/id" role="menuitem" ms.title="ID@Xbox " data-bi-name="Docs_Games_Publish_ID@Xbox ">
+                                ID@Xbox 
+                            </a>
+                        </li>
+
+            </ul>
+
+
+
+                    </div>
+        </li>
+        <li class="c-nav-item-with-dropdown c-nav-link-with-dropdown">
+            <a id="docs_desktop-apps" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/desktop" ms.title="Classic desktop" role="menuitem" data-bi-name="Docs_DesktopApps" data-bi-slot="3" tabindex="70">
+                <span>
+                    Classic desktop
+                </span>
+            </a>
+
+                <i class="shell-icon-dropdown"></i>
+
+
+                    <div class="c-nav-dropdown-tab-content c-nav-multicolumn" data-col="4">
+
+
+
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/desktop/getstarted" role="menuitem" ms.title="Get started" data-bi-name="Docs_DesktopApps_GetStarted">
+                                    Get started
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_desktopapps_getstarted_choose-tech">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/dn614993.aspx" role="menuitem" ms.title="Choose your technology" data-bi-name="Docs_DesktopApps_GetStarted_ChooseTech">
+                                Choose your technology
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_getstarted_whats-new">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/hh848361.aspx" role="menuitem" ms.title="What’s new " data-bi-name="Docs_DesktopApps_GetStarted_What’sNew ">
+                                What’s new 
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_getstarted_desktop-programming">
+                            <a href="https://msdn.microsoft.com/windows/desktop/ee663266.aspx" role="menuitem" ms.title="Programming models" data-bi-name="Docs_DesktopApps_GetStarted_DesktopProgramming">
+                                Programming models
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/desktop/design" role="menuitem" ms.title="Design" data-bi-name="Docs_DesktopApps_Design">
+                                    Design
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_desktopapps_design_principles">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/dn742446.aspx" role="menuitem" ms.title="Design principles" data-bi-name="Docs_DesktopApps_Design_Principles">
+                                Design principles
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_design_guidelines">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/dn688964.aspx" role="menuitem" ms.title="Guidelines " data-bi-name="Docs_DesktopApps_Design_Guidelines ">
+                                Guidelines 
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_design_visual-index">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/dn688966.aspx" role="menuitem" ms.title="Visual index " data-bi-name="Docs_DesktopApps_Design_VisualIndex ">
+                                Visual index 
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/desktop/develop" role="menuitem" ms.title="Develop" data-bi-name="Docs_DesktopApps_Develop">
+                                    Develop
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_desktopapps_develop_desktop-tech">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/bg126469.aspx" role="menuitem" ms.title="Features" data-bi-name="Docs_DesktopApps_Develop_DesktopTech">
+                                Features
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_develop_server_system">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/bg125390.aspx" role="menuitem" ms.title="Server and system " data-bi-name="Docs_DesktopApps_Develop_ServerSystem ">
+                                Server and system 
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_develop_api_ref">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/hh920508.aspx" role="menuitem" ms.title="API reference " data-bi-name="Docs_DesktopApps_Develop_ApiRef">
+                                API reference 
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_develop_certify">
+                            <a href="https://msdn.microsoft.com/library/windows/desktop/mt637086.aspx" role="menuitem" ms.title="Certify " data-bi-name="Docs_DesktopApps_Develop_Certify ">
+                                Certify 
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="https://dev.windows.com/en-us/desktop/test-deploy" role="menuitem" ms.title="Test and deploy" data-bi-name="Docs_DesktopApps_TestDeploy">
+                                    Test and deploy
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_desktopapps_testdeploy_deploy">
+                            <a href="https://dev.windows.com/en-us/desktop/test-deploy/deploy" role="menuitem" ms.title="Deploy " data-bi-name="Docs_DesktopApps_TestDeploy_Deploy">
+                                Deploy 
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_testdeploy_Debug">
+                            <a href="https://dev.windows.com/en-us/desktop/test-deploy/debug" role="menuitem" ms.title="Debug " data-bi-name="Docs_DesktopApps_TestDeploy_Debug ">
+                                Debug 
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_testdeploy_instrument">
+                            <a href="https://dev.windows.com/en-us/desktop/test-deploy/instrument" role="menuitem" ms.title="Instrument " data-bi-name="Docs_DesktopApps_TestDeploy_Instrument ">
+                                Instrument 
+                            </a>
+                        </li>
+                        <li id="docs_desktopapps_testdeploy_tools">
+                            <a href="https://dev.windows.com/en-us/desktop/test-deploy/tools" role="menuitem" ms.title="Tools " data-bi-name="Docs_DesktopApps_TestDeploy_Tools ">
+                                Tools 
+                            </a>
+                        </li>
+
+            </ul>
+
+
+
+                    </div>
+        </li>
+        <li class="c-nav-item-with-dropdown c-nav-link-with-dropdown">
+            <a id="docs_win-iot" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/iot" ms.title="Windows IoT" role="menuitem" data-bi-name="Docs_WinIoT" data-bi-slot="4" tabindex="70">
+                <span>
+                    Windows IoT
+                </span>
+            </a>
+
+                <i class="shell-icon-dropdown"></i>
+
+
+                    <div class="c-nav-dropdown-tab-content c-nav-multicolumn" data-col="4">
+
+
+
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="http://go.microsoft.com/fwlink/p/?linkid=532957" role="menuitem" ms.title="Get started" data-bi-name="Docs_WinIoT_GetStarted">
+                                    Get started
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_winiot_get_started_platform_overview">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532975" role="menuitem" ms.title="Platform overview " data-bi-name="Docs_WinIoT_GetStarted_PlatformOverview ">
+                                Platform overview 
+                            </a>
+                        </li>
+                        <li id="docs_winiot_get_started_register">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532947" role="menuitem" ms.title="Register " data-bi-name="Docs_WinIoT_GetStarted_Register ">
+                                Register 
+                            </a>
+                        </li>
+                        <li id="docs_winiot_get_started_hardware">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532948" role="menuitem" ms.title="Hardware" data-bi-name="Docs_WinIoT_GetStarted_Hardware">
+                                Hardware
+                            </a>
+                        </li>
+                        <li id="docs_winiot_get_started_setupyourdevice">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532974" role="menuitem" ms.title="Set up your device " data-bi-name="Docs_WinIoT_GetStarted_SetupYourDevice">
+                                Set up your device 
+                            </a>
+                        </li>
+                        <li id="docs_winiot_get_started_writefirstapp">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532945" role="menuitem" ms.title="Write your first app " data-bi-name="Docs_WinIoT_GetStarted_WriteFirstApp">
+                                Write your first app 
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                <a href="http://go.microsoft.com/fwlink/p/?linkid=532961" role="menuitem" ms.title="Develop" data-bi-name="Docs_WinIoT_Develop">
+                                    Develop
+                                </a>
+                            </h3>
+                    </li>
+                        <li id="docs_winiot_develop_win-iot-build2015">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532963" role="menuitem" ms.title="Windows IoT at Build 2015" data-bi-name="Docs_WinIoT_develop_WinIoTBuild2015">
+                                Windows IoT at Build 2015
+                            </a>
+                        </li>
+                        <li id="docs_winiot_develop_code">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532976" role="menuitem" ms.title="Code samples " data-bi-name="Docs_WinIoT_Develop_Code">
+                                Code samples 
+                            </a>
+                        </li>
+                        <li id="docs_winiot_develop_faq">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532965" role="menuitem" ms.title="FAQ " data-bi-name="Docs_WinIoT_develop_FAQ ">
+                                FAQ 
+                            </a>
+                        </li>
+
+            </ul>
+            <ul class="c-nav-dropdown-tab-list shell-c3-group">
+                    <li>
+                            <h3>
+                                Learn more
+                            </h3>
+                    </li>
+                        <li id="docs_winiot_learnmore_iot_project_gallery">
+                            <a href="http://go.microsoft.com/fwlink/p/?linkid=532977" role="menuitem" ms.title="Project gallery " data-bi-name="Docs_WinIoT_LearnMore_IoTProjectGallery">
+                                Project gallery 
+                            </a>
+                        </li>
+                        <li id="docs_winiot_learnmore_iot_downloads">
+                            <a href="http://go.microsoft.com/fwlink/p/?LinkID=532967" role="menuitem" ms.title="Downloads" data-bi-name="Docs_WinIoT_LearnMore_Downloads">
+                                Downloads
+                            </a>
+                        </li>
+                        <li id="docs_winiot_learnmore_community">
+                            <a href="http://go.microsoft.com/fwlink/p/?LinkID=532968" role="menuitem" ms.title="Community " data-bi-name="Docs_WinIoT_LearnMore_Community">
+                                Community 
+                            </a>
+                        </li>
+
+            </ul>
+
+
+
+                    </div>
+        </li>
+        <li class="c-nav-item ">
+            <a id="docs_edge" class="c-nav-dropdown-item c-nav-link " href="https://dev.windows.com/en-us/microsoft-edge" ms.title="Microsoft Edge" role="link" data-bi-name="Docs_Edge" data-bi-slot="5" tabindex="70">
+                <span>
+                    Microsoft Edge
+                </span>
+            </a>
+
+
+
+        </li>
+
+
+            </ul>
+                        </li>
+        <li class="c-top-nav-item">
+                <a id="downloads" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/downloads" ms.title="Downloads" role="menuitem" data-bi-name="Downloads" data-bi-slot="3" data-show-cta="True" tabindex="70">
+                    <span>
+                        Downloads
+                    </span>
+                </a>
+            </li>
+        <li class="c-top-nav-item">
+                <a id="samples" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/samples" ms.title="Samples" role="menuitem" data-bi-name="Samples" data-bi-slot="4" data-show-cta="True" tabindex="70">
+                    <span>
+                        Samples
+                    </span>
+                </a>
+            </li>
+        <li class="c-top-nav-item">
+                <a id="support" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/support" ms.title="Support" role="menuitem" data-bi-name="Support" data-bi-slot="5" data-show-cta="True" tabindex="70">
+                    <span>
+                        Support
+                    </span>
+                </a>
+            </li>
+        <li class="c-top-nav-item">
+                <a id="programs" class="c-top-nav-link c-nav-link" href="https://dev.windows.com/en-us/programs" ms.title="Programs" role="menuitem" data-bi-name="Programs" data-bi-slot="6" data-show-cta="True" tabindex="70">
+                    <span>
+                        Programs
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+                <div class="shell-category-nav-featured">
+                    <a id="dashboard" class="c-nav-link c-top-nav-link" ms.title="Dashboard" href="https://dev.windows.com/overview?from=UHF" role="menuitem" data-bi-name="Dashboard" data-bi-slot="7">
+                        <span>
+                            Dashboard
+                        </span>
+                    </a>
+                </div>
+
+        <div class="c-nav-pagination c-nav-pagination-next">
+            <i class="shell-icon-dropdown facing-right"></i>
+        </div>
+    </div>
+
+</div>
+<div class="fixed-category-nav-buffer"></div>
+
+
+
+<script data-do-not-move="true" type="text/javascript">
+
+    var shellInitOptions = {
+        lcaDisclaimerEnabled: false,
+        suggestedProductTitle : 'Suggested products'
+    };
+
+    
+    var meControlInitOptions = {
+        containerId: 'meControl',
+            enabled: true,
+        headerHeight: 48,
+        custom: {chevHtml:'<i class="msame_chev_uhf shell-icon-dropdown"></i>'},
+        
+            
+        market: 'en-US',
+        
+
+        mobileBreakpoints: {
+            shortHeader: 1084
+            },
+
+        rpData:
+    {
+        msaInfo:
+            {
+                        
+                signInUrl: '/en-us/store/signin',
+                signOutUrl: '/en-us/store/signout',
+                accountSettingsUrl: 'https://account.microsoft.com/',
+                switchUrl: '',
+                meUrl: 'https://login.live.com/me.srf?wa=wsignin1.0',
+                isSupported: true
+                
+            },
+        aadInfo:
+            {
+            },
+        preferredIdp: 'msa',
+    },
+        signInStr: 'Sign in',
+        signOutStr: 'Sign out'
+    };
+</script>
+ 
+    </div>
+    <input type="hidden" id="UhfSignInOutLink" value="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1454596367&amp;rver=6.0.5276.0&amp;wp=MCMBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fwindows%2fdesktop%2faa383751%2528v%3dvs.85%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" />
+    
+    
+
+
+
+
+
+
+
+
+    <div id="breadcrumbs">
+        <div id="breadcrumbDesktop" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa906039.aspx" title="Windows desktop applications"></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bg161546.aspx" title="Get started"><span>Get started</span></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ee663266.aspx" title="Desktop programming"><span>Desktop programming</span></a></span>
+                        <span class="breadcrumbDropSmall">
+                            <a id="breadcrumbDropDownButton" href="#" targethref="https://msdn.microsoft.com/en-us/library/windows/desktop/ee663266.aspx" title="Using the Windows Headers"><span>Using the Windows Headers</span></a>
+                        </span>
+        </div>
+        <div id="breadcrumbDropDownMenu"></div>
+        <div id="tocDropDownMenu"></div>
+
+        <div id="breadcrumbTablet" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ee663266.aspx" title="Desktop programming"></a></span>
+                    <span><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383745(v=vs.85).aspx" title="Using the Windows Headers"><span>Using the Windows Headers</span></a></span>
+                <span class="breadcrumbDropSmall"><a id="tocDropDownButton" href="#" title="Windows Data Types"><span>Windows Data Types</span></a></span>
+        </div>
+        <div id="breadcrumbMobile" class="breadCrumb">
+                <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383745(v=vs.85).aspx" title="Using the Windows Headers"></a></span>
+            <span class="breadcrumbDropSmall"><a id="tocPopupButton" href="#" title="Windows Data Types"><span>Windows Data Types</span></a></span>
+        </div>
+    </div>
+    <div id="tocPopupMenu">
+        <div id="tocPopMenuClose" class="tocCloseLarge"></div>
+        <div id="tocTitle">Windows Data Types</div>
+    </div>
+
+
+        <div id="body">
+            <span id="tabletView_large"></span>
+            <span id="tabletView_small"></span>
+            <span id="mobileView"></span>
+            
+
+
+
+
+
+
+
+    <div id="leftNav" class="">
+
+
+
+
+
+<div id="tocnav" class="hide-archive" ms.pgarea="left toc">
+
+
+    <div class="tocunselected">
+        <div id="tocExpandArea">
+            <span class="toc_empty"></span>
+            <span id="tocExpandButton"><a href="#"></a></span>
+        </div>
+        <div id="tocExpand"></div>
+    </div>
+    <div class="tocselected"></div>
+    <div class="tocunselected">
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383701(v=vs.85).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Header Annotations">Header Annotations</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a data-tochassubtree="true" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383732(v=vs.85).aspx" id="ms767836_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STRICT Type Checking">STRICT Type Checking</a>                </div>
+                <div class="toclevel current" data-toclevel="1">
+<a data-tochassubtree="true" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" id="ms767839_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Windows Data Types">Windows Data Types</a>                </div>
+                <div class="toclevel " data-toclevel="2">
+<a data-tochassubtree="true" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383710(v=vs.85).aspx" id="hh708783_VS.85_en-us" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Large Integers">Large Integers</a>                </div>
+    </div>
+    <a id="tocMenuToggler" href="#">
+        <span id="tocMenuTogglerIcon" class="tocMenuCollapse"></span>
+        <div id="tocMenuTogglerLabel">TOC</div>
+    </a>
+</div>            <div style="display:none">
+                <div id="CollapseLocalizeString">Collapse the table of content</div>
+                <div id="ExpandLocalizeString">Expand the table of content</div>
+            </div>
+        <div>
+            <a id="isd_archiveControlResponsive" style="display:none;" data-include-archive="Include Previous Version" data-exclude-archive="Exclude Previous Version">
+            </a>
+        </div>
+    </div>
+    <div id="content" class="content">
+
+
+
+
+
+
+
+
+
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Windows Data Types</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<p>The data types supported by Windows are used to define function return values, function and message 
+    parameters, and structure members. They define the size and meaning of these elements. For more information about 
+    the underlying C/C++ data types, see 
+    <a href="Http://go.microsoft.com/fwlink/p/?linkid=83930">Data Type Ranges</a>.</p>
+<p>The following table contains the following types: character, integer, Boolean, pointer, and handle. The 
+     character, integer, and Boolean types are common to most C compilers. Most of the pointer-type names begin with a 
+     prefix of P or LP. Handles refer to a resource that has been loaded into memory.</p>
+<p>For more information about handling 64-bit integers, see 
+     <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383710(v=vs.85).aspx">Large Integers</a>.</p>
+<table Responsive="true">
+<tr><th>Data type</th><th>Description</th></tr>
+<tr><td data-th="Data type"><a id="APIENTRY"></a><a id="apientry"></a><strong>APIENTRY</strong></td><td data-th="Description">
+<p>The calling convention for system functions.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>#define APIENTRY WINAPI</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="ATOM"></a><a id="atom"></a><strong>ATOM</strong></td><td data-th="Description">
+<p>An atom. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms649053(v=vs.85).aspx">About Atom Tables</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef WORD ATOM;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="BOOL"></a><a id="bool"></a><strong>BOOL</strong></td><td data-th="Description">
+<p>A Boolean variable (should be <strong>TRUE</strong> or <strong>FALSE</strong>).</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef int BOOL;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="BOOLEAN"></a><a id="boolean"></a><strong>BOOLEAN</strong></td><td data-th="Description">
+<p>A Boolean variable (should be <strong>TRUE</strong> or <strong>FALSE</strong>).</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef BYTE BOOLEAN;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="BYTE"></a><a id="byte"></a><strong>BYTE</strong></td><td data-th="Description">
+<p>A byte (8 bits).</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef unsigned char BYTE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="CALLBACK"></a><a id="callback"></a><strong>CALLBACK</strong></td><td data-th="Description">
+<p>The calling convention for callback functions.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>#define CALLBACK __stdcall</code></p>
+<p><strong>CALLBACK</strong>, <strong>WINAPI</strong>, and 
+        <strong>APIENTRY</strong> are all used to define functions with the __stdcall calling convention. 
+        Most functions in the Windows API are declared using <strong>WINAPI</strong>. You may wish to use 
+        <strong>CALLBACK</strong> for the callback functions that you implement to help identify the 
+        function as a callback function.</p>
+</td></tr>
+<tr><td data-th="Data type"><a id="CCHAR"></a><a id="cchar"></a><strong>CCHAR</strong></td><td data-th="Description">
+<p>An 8-bit Windows (ANSI) character.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef char CCHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="CHAR"></a><a id="char"></a><strong>CHAR</strong></td><td data-th="Description">
+<p>An 8-bit Windows (ANSI) character. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef char CHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="COLORREF"></a><a id="colorref"></a><strong>COLORREF</strong></td><td data-th="Description">
+<p>The red, green, blue (RGB) color value (32 bits). See 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183449(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">COLORREF</strong></a> for information on this type.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef DWORD COLORREF;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="CONST"></a><a id="const"></a><strong>CONST</strong></td><td data-th="Description">
+<p>A variable whose value is to remain constant during execution. </p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>#define CONST const</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="DWORD"></a><a id="dword"></a><strong>DWORD</strong></td><td data-th="Description">
+<p>A 32-bit unsigned integer. The range is 0 through 4294967295 decimal.</p>
+<p>This type is declared in IntSafe.h as follows:</p>
+<p><code>typedef unsigned long DWORD;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="DWORDLONG"></a><a id="dwordlong"></a><strong>DWORDLONG</strong></td><td data-th="Description">
+<p>A 64-bit unsigned integer. The range is 0 through 18446744073709551615 decimal.</p>
+<p>This type is declared in IntSafe.h as follows:</p>
+<p><code>typedef unsigned __int64 DWORDLONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="DWORD_PTR"></a><a id="dword_ptr"></a><strong>DWORD_PTR</strong></td><td data-th="Description">
+<p>An unsigned long type for pointer precision. Use when casting a pointer to a long type to perform pointer 
+        arithmetic. (Also commonly used for general 32-bit parameters that have been extended to 64 bits in 64-bit 
+        Windows.)</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef ULONG_PTR DWORD_PTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="DWORD32"></a><a id="dword32"></a><strong>DWORD32</strong></td><td data-th="Description">
+<p>A 32-bit unsigned integer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef unsigned int DWORD32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="DWORD64"></a><a id="dword64"></a><strong>DWORD64</strong></td><td data-th="Description">
+<p>A 64-bit unsigned integer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef unsigned __int64 DWORD64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="FLOAT"></a><a id="float"></a><strong>FLOAT</strong></td><td data-th="Description">
+<p>A floating-point variable.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef float FLOAT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HACCEL"></a><a id="haccel"></a><strong>HACCEL</strong></td><td data-th="Description">
+<p>A handle to an <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms645526(v=vs.85).aspx">accelerator table</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HACCEL;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HALF_PTR"></a><a id="half_ptr"></a><strong>HALF_PTR</strong></td><td data-th="Description">
+<p>Half the size of a pointer. Use within a structure that contains a pointer and two small fields.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_56104968-a330-438a-a5f6-34a787c145ba');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_56104968-a330-438a-a5f6-34a787c145ba" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef _WIN64
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">int</span> HALF_PTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">short</span> HALF_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="HANDLE"></a><a id="handle"></a><strong>HANDLE</strong></td><td data-th="Description">
+<p>A handle to an object.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef PVOID HANDLE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HBITMAP"></a><a id="hbitmap"></a><strong>HBITMAP</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183377(v=vs.85).aspx">bitmap</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HBITMAP;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HBRUSH"></a><a id="hbrush"></a><strong>HBRUSH</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183394(v=vs.85).aspx">brush</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HBRUSH;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HCOLORSPACE"></a><a id="hcolorspace"></a><strong>HCOLORSPACE</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms536546(v=vs.85).aspx">color space</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HCOLORSPACE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HCONV"></a><a id="hconv"></a><strong>HCONV</strong></td><td data-th="Description">
+<p>A handle to a dynamic data exchange (DDE) conversation.</p>
+<p>This type is declared in Ddeml.h as follows:</p>
+<p><code>typedef HANDLE HCONV;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HCONVLIST"></a><a id="hconvlist"></a><strong>HCONVLIST</strong></td><td data-th="Description">
+<p>A handle to a DDE conversation list.</p>
+<p>This type is declared in Ddeml.h as follows:</p>
+<p><code>typedef HANDLE HCONVLIST;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HCURSOR"></a><a id="hcursor"></a><strong>HCURSOR</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms646970(v=vs.85).aspx">cursor</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HICON HCURSOR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HDC"></a><a id="hdc"></a><strong>HDC</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183560(v=vs.85).aspx">device context</a> (DC).</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HDC;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HDDEDATA"></a><a id="hddedata"></a><strong>HDDEDATA</strong></td><td data-th="Description">
+<p>A handle to DDE data.</p>
+<p>This type is declared in Ddeml.h as follows:</p>
+<p><code>typedef HANDLE HDDEDATA;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HDESK"></a><a id="hdesk"></a><strong>HDESK</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms682573(v=vs.85).aspx">desktop</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HDESK;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HDROP"></a><a id="hdrop"></a><strong>HDROP</strong></td><td data-th="Description">
+<p>A handle to an internal drop structure.</p>
+<p>This type is declared in ShellApi.h as follows:</p>
+<p><code>typedef HANDLE HDROP;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HDWP"></a><a id="hdwp"></a><strong>HDWP</strong></td><td data-th="Description">
+<p>A handle to a deferred window position structure.</p>
+<p>This type is declared in WinUser.h as follows:</p>
+<p><code>typedef HANDLE HDWP;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HENHMETAFILE"></a><a id="henhmetafile"></a><strong>HENHMETAFILE</strong></td><td data-th="Description">
+<p>A handle to an <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd145051(v=vs.85).aspx">enhanced metafile</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HENHMETAFILE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HFILE"></a><a id="hfile"></a><strong>HFILE</strong></td><td data-th="Description">
+<p>A handle to a file opened by <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa365430(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">OpenFile</strong></a>, not 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa363858(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CreateFile</strong></a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef int HFILE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HFONT"></a><a id="hfont"></a><strong>HFONT</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162470(v=vs.85).aspx">font</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HFONT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HGDIOBJ"></a><a id="hgdiobj"></a><strong>HGDIOBJ</strong></td><td data-th="Description">
+<p>A handle to a GDI object.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HGDIOBJ;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HGLOBAL"></a><a id="hglobal"></a><strong>HGLOBAL</strong></td><td data-th="Description">
+<p>A handle to a global memory block.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HGLOBAL;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HHOOK"></a><a id="hhook"></a><strong>HHOOK</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms632589(v=vs.85).aspx">hook</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HHOOK;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HICON"></a><a id="hicon"></a><strong>HICON</strong></td><td data-th="Description">
+<p>A handle to an <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms646973(v=vs.85).aspx">icon</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HICON;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HINSTANCE"></a><a id="hinstance"></a><strong>HINSTANCE</strong></td><td data-th="Description">
+<p>A handle to an instance. This is the base address of the module in memory.</p>
+<p><strong>HMODULE</strong> and <strong>HINSTANCE</strong> are the same today, but 
+        represented different things in 16-bit Windows.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HINSTANCE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HKEY"></a><a id="hkey"></a><strong>HKEY</strong></td><td data-th="Description">
+<p>A handle to a registry key.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HKEY;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HKL"></a><a id="hkl"></a><strong>HKL</strong></td><td data-th="Description">
+<p>An input locale identifier.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HKL;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HLOCAL"></a><a id="hlocal"></a><strong>HLOCAL</strong></td><td data-th="Description">
+<p>A handle to a local memory block.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HLOCAL;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HMENU"></a><a id="hmenu"></a><strong>HMENU</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms646977(v=vs.85).aspx">menu</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HMENU;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HMETAFILE"></a><a id="hmetafile"></a><strong>HMETAFILE</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd145051(v=vs.85).aspx">metafile</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HMETAFILE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HMODULE"></a><a id="hmodule"></a><strong>HMODULE</strong></td><td data-th="Description">
+<p>A handle to a module. The is the base address of the module in memory.</p>
+<p><strong>HMODULE</strong> and <strong>HINSTANCE</strong> are the same in current 
+        versions of Windows, but 
+        represented different things in 16-bit Windows.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HINSTANCE HMODULE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HMONITOR"></a><a id="hmonitor"></a><strong>HMONITOR</strong></td><td data-th="Description">
+<p>A handle to a display monitor.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>if(WINVER &gt;= 0x0500) typedef HANDLE HMONITOR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HPALETTE"></a><a id="hpalette"></a><strong>HPALETTE</strong></td><td data-th="Description">
+<p>A handle to a palette.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HPALETTE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HPEN"></a><a id="hpen"></a><strong>HPEN</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162786(v=vs.85).aspx">pen</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HPEN;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HRESULT"></a><a id="hresult"></a><strong>HRESULT</strong></td><td data-th="Description">
+<p>The return codes used by COM interfaces. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms690088(v=vs.85).aspx">Structure of the COM Error Codes</a>. To test 
+        an <strong>HRESULT</strong> value, use the <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms693474(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">FAILED</strong></a> 
+        and <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms687197(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">SUCCEEDED</strong></a> macros.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef LONG HRESULT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HRGN"></a><a id="hrgn"></a><strong>HRGN</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162913(v=vs.85).aspx">region</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HRGN;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HRSRC"></a><a id="hrsrc"></a><strong>HRSRC</strong></td><td data-th="Description">
+<p>A handle to a resource.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HRSRC;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HSZ"></a><a id="hsz"></a><strong>HSZ</strong></td><td data-th="Description">
+<p>A handle to a DDE string.</p>
+<p>This type is declared in Ddeml.h as follows:</p>
+<p><code>typedef HANDLE HSZ;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HWINSTA"></a><a id="hwinsta"></a><strong>HWINSTA</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms687096(v=vs.85).aspx">window station</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE WINSTA;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="HWND"></a><a id="hwnd"></a><strong>HWND</strong></td><td data-th="Description">
+<p>A handle to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms632595(v=vs.85).aspx">window</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE HWND;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="INT"></a><a id="int"></a><strong>INT</strong></td><td data-th="Description">
+<p>A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef int INT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="INT_PTR"></a><a id="int_ptr"></a><strong>INT_PTR</strong></td><td data-th="Description">
+<p>A signed integer type for pointer precision. Use when casting a pointer to an integer to perform pointer 
+        arithmetic.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_b67ebfe2-0612-4c30-ab5d-864e069acb7e');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b67ebfe2-0612-4c30-ab5d-864e069acb7e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> defined(_WIN64) 
+ <span style="color:Blue;">typedef</span> __int64 INT_PTR; 
+#<span style="color:Blue;">else</span> 
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">int</span> INT_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="INT8"></a><a id="int8"></a><strong>INT8</strong></td><td data-th="Description">
+<p>An 8-bit signed integer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef signed char INT8;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="INT16"></a><a id="int16"></a><strong>INT16</strong></td><td data-th="Description">
+<p>A 16-bit signed integer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef signed short INT16;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="INT32"></a><a id="int32"></a><strong>INT32</strong></td><td data-th="Description">
+<p>A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef signed int INT32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="INT64"></a><a id="int64"></a><strong>INT64</strong></td><td data-th="Description">
+<p>A 64-bit signed integer. The range is –9223372036854775808 through 9223372036854775807 
+        decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef signed __int64 INT64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LANGID"></a><a id="langid"></a><strong>LANGID</strong></td><td data-th="Description">
+<p>A  language identifier. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318691(v=vs.85).aspx">Language Identifiers</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef WORD LANGID;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LCID"></a><a id="lcid"></a><strong>LCID</strong></td><td data-th="Description">
+<p>A locale identifier. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd373763(v=vs.85).aspx">Locale Identifiers</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef DWORD LCID;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LCTYPE"></a><a id="lctype"></a><strong>LCTYPE</strong></td><td data-th="Description">
+<p>A locale information type. For a list, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd464799(v=vs.85).aspx">Locale Information Constants</a>.</p>
+<p>This type is declared in WinNls.h as follows:</p>
+<p><code>typedef DWORD LCTYPE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LGRPID"></a><a id="lgrpid"></a><strong>LGRPID</strong></td><td data-th="Description">
+<p>A language group identifier. For a list, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd317819(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">EnumLanguageGroupLocales</strong></a>.</p>
+<p>This type is declared in WinNls.h as follows:</p>
+<p><code>typedef DWORD LGRPID;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LONG"></a><a id="long"></a><strong>LONG</strong></td><td data-th="Description">
+<p>A 32-bit signed integer. The range is –2147483648 through 2147483647 decimal.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef long LONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LONGLONG"></a><a id="longlong"></a><strong>LONGLONG</strong></td><td data-th="Description">
+<p>A 64-bit signed integer. The range is –9223372036854775808 through 9223372036854775807 
+        decimal.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_880193ae-fd4a-4bfc-a18d-1b44e0494eca');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_880193ae-fd4a-4bfc-a18d-1b44e0494eca" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> !defined(_M_IX86)
+ <span style="color:Blue;">typedef</span> __int64 LONGLONG; 
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">double</span> LONGLONG;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="LONG_PTR"></a><a id="long_ptr"></a><strong>LONG_PTR</strong></td><td data-th="Description">
+<p>A signed long type for pointer precision. Use when casting a pointer to a long to perform pointer 
+        arithmetic.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_b0bb8d42-b77b-4671-ad5d-b72d5a60099f');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b0bb8d42-b77b-4671-ad5d-b72d5a60099f" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> defined(_WIN64)
+ <span style="color:Blue;">typedef</span> __int64 LONG_PTR; 
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">long</span> LONG_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="LONG32"></a><a id="long32"></a><strong>LONG32</strong></td><td data-th="Description">
+<p>A 32-bit signed integer. The range is –2147483648 through 2147483647 decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef signed int LONG32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LONG64"></a><a id="long64"></a><strong>LONG64</strong></td><td data-th="Description">
+<p>A 64-bit signed integer. The range is –9223372036854775808 through 9223372036854775807 
+        decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef __int64 LONG64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPARAM"></a><a id="lparam"></a><strong>LPARAM</strong></td><td data-th="Description">
+<p>A message parameter.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef LONG_PTR LPARAM;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPBOOL"></a><a id="lpbool"></a><strong>LPBOOL</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#BOOL">BOOL</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef BOOL far *LPBOOL;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPBYTE"></a><a id="lpbyte"></a><strong>LPBYTE</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#BYTE">BYTE</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef BYTE far *LPBYTE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPCOLORREF"></a><a id="lpcolorref"></a><strong>LPCOLORREF</strong></td><td data-th="Description">
+<p>A pointer to a <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183449(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">COLORREF</strong></a> value.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef DWORD *LPCOLORREF;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPCSTR"></a><a id="lpcstr"></a><strong>LPCSTR</strong></td><td data-th="Description">
+<p>A pointer to a constant null-terminated string of 8-bit Windows (ANSI) characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef __nullterminated CONST CHAR *LPCSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPCTSTR"></a><a id="lpctstr"></a><strong>LPCTSTR</strong></td><td data-th="Description">
+<p>An <a href="#LPCWSTR">LPCWSTR</a> if <strong>UNICODE</strong> is 
+        defined, an <a href="#LPCSTR">LPCSTR</a> otherwise. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd374131(v=vs.85).aspx">Windows Data Types for Strings</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fc7cdd24-c1b4-46c6-b07e-695f8ef14977');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fc7cdd24-c1b4-46c6-b07e-695f8ef14977" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef UNICODE
+ <span style="color:Blue;">typedef</span> LPCWSTR LPCTSTR; 
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> LPCSTR LPCTSTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="LPCVOID"></a><a id="lpcvoid"></a><strong>LPCVOID</strong></td><td data-th="Description">
+<p>A pointer to a constant of any type.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef CONST void *LPCVOID;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPCWSTR"></a><a id="lpcwstr"></a><strong>LPCWSTR</strong></td><td data-th="Description">
+<p>A pointer to a constant null-terminated string of 16-bit Unicode characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef CONST WCHAR *LPCWSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPDWORD"></a><a id="lpdword"></a><strong>LPDWORD</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#DWORD">DWORD</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef DWORD *LPDWORD;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPHANDLE"></a><a id="lphandle"></a><strong>LPHANDLE</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#HANDLE">HANDLE</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HANDLE *LPHANDLE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPINT"></a><a id="lpint"></a><strong>LPINT</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#INT">INT</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef int *LPINT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPLONG"></a><a id="lplong"></a><strong>LPLONG</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#LONG">LONG</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef long *LPLONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPSTR"></a><a id="lpstr"></a><strong>LPSTR</strong></td><td data-th="Description">
+<p>A pointer to a null-terminated string of 8-bit Windows (ANSI) characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef CHAR *LPSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPTSTR"></a><a id="lptstr"></a><strong>LPTSTR</strong></td><td data-th="Description">
+<p>An <a href="#LPWSTR">LPWSTR</a> if 
+        <strong>UNICODE</strong> is defined, an 
+        <a href="#LPSTR">LPSTR</a> otherwise. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd374131(v=vs.85).aspx">Windows Data Types for Strings</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5cc9b0d0-92fd-4452-a21e-0e9dcf9a1372');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5cc9b0d0-92fd-4452-a21e-0e9dcf9a1372" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef UNICODE
+ <span style="color:Blue;">typedef</span> LPWSTR LPTSTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> LPSTR LPTSTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="LPVOID"></a><a id="lpvoid"></a><strong>LPVOID</strong></td><td data-th="Description">
+<p>A pointer to any type.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef void *LPVOID;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPWORD"></a><a id="lpword"></a><strong>LPWORD</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#WORD">WORD</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef WORD *LPWORD;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LPWSTR"></a><a id="lpwstr"></a><strong>LPWSTR</strong></td><td data-th="Description">
+<p>A pointer to a null-terminated string of 16-bit Unicode characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef WCHAR *LPWSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="LRESULT"></a><a id="lresult"></a><strong>LRESULT</strong></td><td data-th="Description">
+<p>Signed result of message processing.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef LONG_PTR LRESULT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PBOOL"></a><a id="pbool"></a><strong>PBOOL</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#BOOL">BOOL</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef BOOL *PBOOL;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PBOOLEAN"></a><a id="pboolean"></a><strong>PBOOLEAN</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#BOOLEAN">BOOLEAN</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef BOOLEAN *PBOOLEAN;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PBYTE"></a><a id="pbyte"></a><strong>PBYTE</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#BYTE">BYTE</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef BYTE *PBYTE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PCHAR"></a><a id="pchar"></a><strong>PCHAR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#CHAR">CHAR</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef CHAR *PCHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PCSTR"></a><a id="pcstr"></a><strong>PCSTR</strong></td><td data-th="Description">
+<p>A pointer to a constant null-terminated string of 8-bit Windows (ANSI) characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef CONST CHAR *PCSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PCTSTR"></a><a id="pctstr"></a><strong>PCTSTR</strong></td><td data-th="Description">
+<p>A <a href="#PCWSTR">PCWSTR</a> if <strong>UNICODE</strong> is defined, a 
+        <a href="#PCSTR">PCSTR</a> otherwise. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd374131(v=vs.85).aspx">Windows Data Types for Strings</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_26423b40-108f-498e-8991-efa4640962a3');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_26423b40-108f-498e-8991-efa4640962a3" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef UNICODE
+ <span style="color:Blue;">typedef</span> LPCWSTR PCTSTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> LPCSTR PCTSTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="PCWSTR"></a><a id="pcwstr"></a><strong>PCWSTR</strong></td><td data-th="Description">
+<p>A pointer to a constant null-terminated string of 16-bit Unicode characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef CONST WCHAR *PCWSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PDWORD"></a><a id="pdword"></a><strong>PDWORD</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#DWORD">DWORD</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef DWORD *PDWORD;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PDWORDLONG"></a><a id="pdwordlong"></a><strong>PDWORDLONG</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#DWORDLONG">DWORDLONG</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef DWORDLONG *PDWORDLONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PDWORD_PTR"></a><a id="pdword_ptr"></a><strong>PDWORD_PTR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#DWORD_PTR">DWORD_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef DWORD_PTR *PDWORD_PTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PDWORD32"></a><a id="pdword32"></a><strong>PDWORD32</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#DWORD32">DWORD32</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef DWORD32 *PDWORD32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PDWORD64"></a><a id="pdword64"></a><strong>PDWORD64</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#DWORD64">DWORD64</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef DWORD64 *PDWORD64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PFLOAT"></a><a id="pfloat"></a><strong>PFLOAT</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#FLOAT">FLOAT</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef FLOAT *PFLOAT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PHALF_PTR"></a><a id="phalf_ptr"></a><strong>PHALF_PTR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#HALF_PTR">HALF_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_781a82e0-aebc-4345-a5c5-08c32cfd2b37');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_781a82e0-aebc-4345-a5c5-08c32cfd2b37" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef _WIN64
+ <span style="color:Blue;">typedef</span> HALF_PTR *PHALF_PTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> HALF_PTR *PHALF_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="PHANDLE"></a><a id="phandle"></a><strong>PHANDLE</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#HANDLE">HANDLE</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef HANDLE *PHANDLE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PHKEY"></a><a id="phkey"></a><strong>PHKEY</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#HKEY">HKEY</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef HKEY *PHKEY;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PINT"></a><a id="pint"></a><strong>PINT</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#INT">INT</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef int *PINT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PINT_PTR"></a><a id="pint_ptr"></a><strong>PINT_PTR</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#INT_PTR">INT_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef INT_PTR *PINT_PTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PINT8"></a><a id="pint8"></a><strong>PINT8</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#INT8">INT8</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef INT8 *PINT8;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PINT16"></a><a id="pint16"></a><strong>PINT16</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#INT16">INT16</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef INT16 *PINT16;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PINT32"></a><a id="pint32"></a><strong>PINT32</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#INT32">INT32</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef INT32 *PINT32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PINT64"></a><a id="pint64"></a><strong>PINT64</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#INT64">INT64</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef INT64 *PINT64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PLCID"></a><a id="plcid"></a><strong>PLCID</strong></td><td data-th="Description">
+<p>A pointer to an <a href="#LCID">LCID</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef PDWORD PLCID;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PLONG"></a><a id="plong"></a><strong>PLONG</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#LONG">LONG</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef LONG *PLONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PLONGLONG"></a><a id="plonglong"></a><strong>PLONGLONG</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#LONGLONG">LONGLONG</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef LONGLONG *PLONGLONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PLONG_PTR"></a><a id="plong_ptr"></a><strong>PLONG_PTR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#LONG_PTR">LONG_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef LONG_PTR *PLONG_PTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PLONG32"></a><a id="plong32"></a><strong>PLONG32</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#LONG32">LONG32</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef LONG32 *PLONG32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PLONG64"></a><a id="plong64"></a><strong>PLONG64</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#LONG64">LONG64</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef LONG64 *PLONG64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="POINTER_32"></a><a id="pointer_32"></a><strong>POINTER_32</strong></td><td data-th="Description">
+<p>A 32-bit pointer. On a 32-bit system, this is a native pointer. On a 64-bit system, this is a truncated 
+        64-bit pointer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_48b429d4-b15e-46b8-88bd-68076b67a694');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_48b429d4-b15e-46b8-88bd-68076b67a694" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> defined(_WIN64)
+ #define POINTER_32 __ptr32
+#<span style="color:Blue;">else</span>
+ #define POINTER_32
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="POINTER_64"></a><a id="pointer_64"></a><strong>POINTER_64</strong></td><td data-th="Description">
+<p>A 64-bit pointer. On a 64-bit system, this is a native pointer. On a 32-bit system, this is a sign-extended 
+        32-bit pointer.</p>
+<p>Note that it is not safe to assume the state of the high pointer bit.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_de4e3530-6f2b-4bf7-9d7e-1e1492359248');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_de4e3530-6f2b-4bf7-9d7e-1e1492359248" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> (_MSC_VER &gt;= 1300)
+ #define POINTER_64 __ptr64
+#<span style="color:Blue;">else</span>
+ #define POINTER_64
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="POINTER_SIGNED"></a><a id="pointer_signed"></a><strong>POINTER_SIGNED</strong></td><td data-th="Description">
+<p>A signed pointer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>#define POINTER_SIGNED __sptr</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="POINTER_UNSIGNED"></a><a id="pointer_unsigned"></a><strong>POINTER_UNSIGNED</strong></td><td data-th="Description">
+<p>An unsigned pointer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>#define POINTER_UNSIGNED __uptr</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PSHORT"></a><a id="pshort"></a><strong>PSHORT</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#SHORT">SHORT</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef SHORT *PSHORT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PSIZE_T"></a><a id="psize_t"></a><strong>PSIZE_T</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#SIZE_T">SIZE_T</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef SIZE_T *PSIZE_T;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PSSIZE_T"></a><a id="pssize_t"></a><strong>PSSIZE_T</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#SSIZE_T">SSIZE_T</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef SSIZE_T *PSSIZE_T;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PSTR"></a><a id="pstr"></a><strong>PSTR</strong></td><td data-th="Description">
+<p>A pointer to a null-terminated string of 8-bit Windows (ANSI) characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef CHAR *PSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PTBYTE"></a><a id="ptbyte"></a><strong>PTBYTE</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#TBYTE">TBYTE</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef TBYTE *PTBYTE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PTCHAR"></a><a id="ptchar"></a><strong>PTCHAR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#TCHAR">TCHAR</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef TCHAR *PTCHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PTSTR"></a><a id="ptstr"></a><strong>PTSTR</strong></td><td data-th="Description">
+<p>A <a href="#PWSTR">PWSTR</a> if <strong>UNICODE</strong> is defined, a 
+       <a href="#PSTR">PSTR</a> otherwise. For more information, see 
+       <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd374131(v=vs.85).aspx">Windows Data Types for Strings</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_2abb852b-7f40-4b5c-9fae-0025b7105178');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_2abb852b-7f40-4b5c-9fae-0025b7105178" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef UNICODE
+ <span style="color:Blue;">typedef</span> LPWSTR PTSTR;
+#<span style="color:Blue;">else</span> <span style="color:Blue;">typedef</span> LPSTR PTSTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="PUCHAR"></a><a id="puchar"></a><strong>PUCHAR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UCHAR">UCHAR</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef UCHAR *PUCHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PUHALF_PTR"></a><a id="puhalf_ptr"></a><strong>PUHALF_PTR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UHALF_PTR">UHALF_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-12" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_93971bdd-007a-410f-a989-0b02a7fe41fe');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_93971bdd-007a-410f-a989-0b02a7fe41fe" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef _WIN64
+ <span style="color:Blue;">typedef</span> UHALF_PTR *PUHALF_PTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> UHALF_PTR *PUHALF_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="PUINT"></a><a id="puint"></a><strong>PUINT</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UINT">UINT</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef UINT *PUINT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PUINT_PTR"></a><a id="puint_ptr"></a><strong>PUINT_PTR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UINT_PTR">UINT_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef UINT_PTR *PUINT_PTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PUINT8"></a><a id="puint8"></a><strong>PUINT8</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UINT8">UINT8</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef UINT8 *PUINT8;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PUINT16"></a><a id="puint16"></a><strong>PUINT16</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UINT16">UINT16</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef UINT16 *PUINT16;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PUINT32"></a><a id="puint32"></a><strong>PUINT32</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UINT32">UINT32</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef UINT32 *PUINT32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PUINT64"></a><a id="puint64"></a><strong>PUINT64</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#UINT64">UINT64</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef UINT64 *PUINT64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PULONG"></a><a id="pulong"></a><strong>PULONG</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#ULONG">ULONG</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef ULONG *PULONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PULONGLONG"></a><a id="pulonglong"></a><strong>PULONGLONG</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#ULONGLONG">ULONGLONG</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef ULONGLONG *PULONGLONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PULONG_PTR"></a><a id="pulong_ptr"></a><strong>PULONG_PTR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#ULONG_PTR">ULONG_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef ULONG_PTR *PULONG_PTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PULONG32"></a><a id="pulong32"></a><strong>PULONG32</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#ULONG32">ULONG32</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef ULONG32 *PULONG32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PULONG64"></a><a id="pulong64"></a><strong>PULONG64</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#ULONG64">ULONG64</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef ULONG64 *PULONG64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PUSHORT"></a><a id="pushort"></a><strong>PUSHORT</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#USHORT">USHORT</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef USHORT *PUSHORT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PVOID"></a><a id="pvoid"></a><strong>PVOID</strong></td><td data-th="Description">
+<p>A pointer to any type.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef void *PVOID;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PWCHAR"></a><a id="pwchar"></a><strong>PWCHAR</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#WCHAR">WCHAR</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef WCHAR *PWCHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PWORD"></a><a id="pword"></a><strong>PWORD</strong></td><td data-th="Description">
+<p>A pointer to a <a href="#WORD">WORD</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef WORD *PWORD;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="PWSTR"></a><a id="pwstr"></a><strong>PWSTR</strong></td><td data-th="Description">
+<p>A pointer to a null-terminated string of 16-bit Unicode characters. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef WCHAR *PWSTR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="QWORD"></a><a id="qword"></a><strong>QWORD</strong></td><td data-th="Description">
+<p>A 64-bit unsigned integer.</p>
+<p>This type is declared as follows:</p>
+<p><code>typedef unsigned __int64 QWORD;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="SC_HANDLE"></a><a id="sc_handle"></a><strong>SC_HANDLE</strong></td><td data-th="Description">
+<p>A handle to a service control manager database. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms685104(v=vs.85).aspx">SCM Handles</a>.</p>
+<p>This type is declared in WinSvc.h as follows:</p>
+<p><code>typedef HANDLE SC_HANDLE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="SC_LOCK"></a><a id="sc_lock"></a><strong>SC_LOCK</strong></td><td data-th="Description">
+<p>A lock to a service control manager database. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms685104(v=vs.85).aspx">SCM Handles</a>.</p>
+<p>This type is declared in WinSvc.h as follows:</p>
+<p><code>typedef LPVOID SC_LOCK;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="SERVICE_STATUS_HANDLE"></a><a id="service_status_handle"></a><strong>SERVICE_STATUS_HANDLE</strong></td><td data-th="Description">
+<p>A handle to a service status value. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms685104(v=vs.85).aspx">SCM Handles</a>.</p>
+<p>This type is declared in WinSvc.h as follows:</p>
+<p><code>typedef HANDLE SERVICE_STATUS_HANDLE;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="SHORT"></a><a id="short"></a><strong>SHORT</strong></td><td data-th="Description">
+<p>A 16-bit integer. The range is –32768 through 32767 decimal.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef short SHORT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="SIZE_T"></a><a id="size_t"></a><strong>SIZE_T</strong></td><td data-th="Description">
+<p>The maximum number of bytes to which a pointer can point. Use for a count that must span the full range of a 
+        pointer.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef ULONG_PTR SIZE_T;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="SSIZE_T"></a><a id="ssize_t"></a><strong>SSIZE_T</strong></td><td data-th="Description">
+<p>A signed version of <a href="#SIZE_T">SIZE_T</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef LONG_PTR SSIZE_T;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="TBYTE"></a><a id="tbyte"></a><strong>TBYTE</strong></td><td data-th="Description">
+<p>A <a href="#WCHAR">WCHAR</a> if <strong>UNICODE</strong> is defined, a 
+        <a href="#CHAR">CHAR</a> otherwise.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-13" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d96917a5-3eb7-4a6a-af59-0fa15f6eeebe');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_d96917a5-3eb7-4a6a-af59-0fa15f6eeebe" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef UNICODE
+ <span style="color:Blue;">typedef</span> WCHAR TBYTE;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> <span style="color:Blue;">char</span> TBYTE;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="TCHAR"></a><a id="tchar"></a><strong>TCHAR</strong></td><td data-th="Description">
+<p>A <a href="#WCHAR">WCHAR</a> if <strong>UNICODE</strong> is defined, a 
+        <a href="#CHAR">CHAR</a> otherwise.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-14" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ad2863c3-271a-429b-bf2e-ce29a5116d79');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_ad2863c3-271a-429b-bf2e-ce29a5116d79" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef UNICODE
+ <span style="color:Blue;">typedef</span> WCHAR TCHAR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">char</span> TCHAR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="UCHAR"></a><a id="uchar"></a><strong>UCHAR</strong></td><td data-th="Description">
+<p>An unsigned <a href="#CHAR">CHAR</a>.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef unsigned char UCHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="UHALF_PTR"></a><a id="uhalf_ptr"></a><strong>UHALF_PTR</strong></td><td data-th="Description">
+<p>An unsigned <a href="#HALF_PTR">HALF_PTR</a>. Use within a structure that 
+        contains a pointer and two small fields.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-15" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_b8a39198-0db1-4467-9557-f282674178a9');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_b8a39198-0db1-4467-9557-f282674178a9" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#ifdef _WIN64
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> <span style="color:Blue;">int</span> UHALF_PTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> <span style="color:Blue;">short</span> UHALF_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="UINT"></a><a id="uint"></a><strong>UINT</strong></td><td data-th="Description">
+<p>An unsigned <a href="#INT">INT</a>. The range is 0 through 4294967295 decimal.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef unsigned int UINT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="UINT_PTR"></a><a id="uint_ptr"></a><strong>UINT_PTR</strong></td><td data-th="Description">
+<p>An unsigned <a href="#INT_PTR">INT_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-16" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e018d82f-6f2e-4b47-b375-c12067f02bbe');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_e018d82f-6f2e-4b47-b375-c12067f02bbe" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> defined(_WIN64)
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> __int64 UINT_PTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> <span style="color:Blue;">int</span> UINT_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="UINT8"></a><a id="uint8"></a><strong>UINT8</strong></td><td data-th="Description">
+<p>An unsigned <a href="#INT8">INT8</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef unsigned  char UINT8;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="UINT16"></a><a id="uint16"></a><strong>UINT16</strong></td><td data-th="Description">
+<p>An unsigned <a href="#INT16">INT16</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef unsigned  short UINT16;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="UINT32"></a><a id="uint32"></a><strong>UINT32</strong></td><td data-th="Description">
+<p>An unsigned <a href="#INT32">INT32</a>. The range is 0 through 4294967295 
+        decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef unsigned int UINT32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="UINT64"></a><a id="uint64"></a><strong>UINT64</strong></td><td data-th="Description">
+<p>An unsigned <a href="#INT64">INT64</a>. The range is 0 through 
+        18446744073709551615 decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef usigned __int 64 UINT64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="ULONG"></a><a id="ulong"></a><strong>ULONG</strong></td><td data-th="Description">
+<p>An unsigned <a href="#LONG">LONG</a>. The range is 0 through 4294967295 
+        decimal.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef unsigned long ULONG;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="ULONGLONG"></a><a id="ulonglong"></a><strong>ULONGLONG</strong></td><td data-th="Description">
+<p>A 64-bit unsigned integer. The range is 0 through 18446744073709551615 decimal.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+
+<div id="code-snippet-17" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_695439a1-a746-4357-b6cb-5577d96aa657');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_695439a1-a746-4357-b6cb-5577d96aa657" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> !defined(_M_IX86)
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> __int64 ULONGLONG;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">double</span> ULONGLONG;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="ULONG_PTR"></a><a id="ulong_ptr"></a><strong>ULONG_PTR</strong></td><td data-th="Description">
+<p>An unsigned <a href="#LONG_PTR">LONG_PTR</a>.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+
+<div id="code-snippet-18" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_417c0feb-8b09-4484-86a0-c8091be7fbde');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_417c0feb-8b09-4484-86a0-c8091be7fbde" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+#<span style="color:Blue;">if</span> defined(_WIN64)
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> __int64 ULONG_PTR;
+#<span style="color:Blue;">else</span>
+ <span style="color:Blue;">typedef</span> <span style="color:Blue;">unsigned</span> <span style="color:Blue;">long</span> ULONG_PTR;
+#endif
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="ULONG32"></a><a id="ulong32"></a><strong>ULONG32</strong></td><td data-th="Description">
+<p>An unsigned <a href="#LONG32">LONG32</a>. The range is 0 through 4294967295 
+        decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef unsigned int ULONG32;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="ULONG64"></a><a id="ulong64"></a><strong>ULONG64</strong></td><td data-th="Description">
+<p>An unsigned <a href="#LONG64">LONG64</a>. The range is 0 through 
+        18446744073709551615 decimal.</p>
+<p>This type is declared in BaseTsd.h as follows:</p>
+<p><code>typedef unsigned __int64 ULONG64;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="UNICODE_STRING"></a><a id="unicode_string"></a><strong>UNICODE_STRING</strong></td><td data-th="Description">
+<p>A Unicode string.</p>
+<p>This type is declared in Winternl.h as follows:</p>
+
+<div id="code-snippet-19" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>C++</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_3624cd81-6499-4d12-9c9b-09472d50a81b');" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_3624cd81-6499-4d12-9c9b-09472d50a81b" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+
+<span style="color:Blue;">typedef</span> <span style="color:Blue;">struct</span> _UNICODE_STRING {
+  USHORT  Length;
+  USHORT  MaximumLength;
+  PWSTR  Buffer;
+} UNICODE_STRING;
+<span style="color:Blue;">typedef</span> UNICODE_STRING *PUNICODE_STRING;
+<span style="color:Blue;">typedef</span> <span style="color:Blue;">const</span> UNICODE_STRING *PCUNICODE_STRING;
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</td></tr>
+<tr><td data-th="Data type"><a id="USHORT"></a><a id="ushort"></a><strong>USHORT</strong></td><td data-th="Description">
+<p>An unsigned <a href="#SHORT">SHORT</a>. The range is 0 through 65535 decimal.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef unsigned short USHORT;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="USN"></a><a id="usn"></a><strong>USN</strong></td><td data-th="Description">
+<p>An update sequence number (USN).</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef LONGLONG USN;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="VOID"></a><a id="void"></a><strong>VOID</strong></td><td data-th="Description">
+<p>Any type.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>#define VOID void</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="WCHAR"></a><a id="wchar"></a><strong>WCHAR</strong></td><td data-th="Description">
+<p>A 16-bit Unicode character. For more information, see 
+        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183415(v=vs.85).aspx">Character Sets Used By Fonts</a>.</p>
+<p>This type is declared in WinNT.h as follows:</p>
+<p><code>typedef wchar_t WCHAR;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="WINAPI"></a><a id="winapi"></a><strong>WINAPI</strong></td><td data-th="Description">
+<p>The calling convention for system functions.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>#define WINAPI __stdcall</code></p>
+<p><strong>CALLBACK</strong>, <strong>WINAPI</strong>, and 
+        <strong>APIENTRY</strong> are all used to define functions with the __stdcall calling convention. 
+        Most functions in the Windows API are declared using <strong>WINAPI</strong>. You may wish to use 
+        <strong>CALLBACK</strong> for the callback functions that you implement to help identify the 
+        function as a callback function.</p>
+</td></tr>
+<tr><td data-th="Data type"><a id="WORD"></a><a id="word"></a><strong>WORD</strong></td><td data-th="Description">
+<p>A 16-bit unsigned integer. The range is 0 through 65535 decimal.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef unsigned short WORD;</code></p>
+</td></tr>
+<tr><td data-th="Data type"><a id="WPARAM"></a><a id="wparam"></a><strong>WPARAM</strong></td><td data-th="Description">
+<p>A message parameter.</p>
+<p>This type is declared in WinDef.h as follows:</p>
+<p><code>typedef UINT_PTR WPARAM;</code></p>
+</td></tr>
+</table>
+<h2>Requirements</h2>
+<table>
+<tr><th>
+<p>Minimum supported client</p>
+</th><td>Windows XP [desktop apps only]</td></tr>
+<tr><th>
+<p>Minimum supported server</p>
+</th><td>Windows Server 2003 [desktop apps only]</td></tr>
+<tr><th>
+<p>Header</p>
+</th><td>
+<dl>
+<dt>BaseTsd.h; </dt>
+<dt>WinDef.h; </dt>
+<dt>WinNT.h</dt>
+</dl>
+</td></tr>
+</table>
+<p> </p>
+<p> </p>
+</div>
+</div>
+
+
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Community Additions</h2>
+                <a class="communityContentAddLink" href="https://msdn.microsoft.com/en-us/library/windows/desktop/community/add/aa383751(v=vs.85).aspx">
+                    <span class="communityContentAddButton" title="Add">
+                        ADD
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/en-us/library/windows/desktop/community/comments/aa383751(v=vs.85).aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+
+    </div>
+
+<div id="rightNavigationMenu" ms.pgarea="right nav">
+    <div id="mobileButtons">
+        <div id="navigationButtons">
+            <a id="provideFeedback1" href="javascript:void(0)"><ins class="suggestion"></ins>Any suggestions?</a>
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751(d=printer,v=vs.85).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook" href="/en-us/library/export/help/?returnUrl=%2fen-us%2flibrary%2fwindows%2fdesktop%2faa383751(v%3dvs.85).aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div>
+    </div>
+    <div id="navMain">
+        <div id="closeNavigation">
+            <a class="tocCloseSmall" id="closeButton"></a>
+        </div>
+        <div id="navigationButtons">
+            <a id="provideFeedback2" href="javascript:void(0)"><ins class="suggestion"></ins>Any suggestions?</a>
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751(d=printer,v=vs.85).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook2" href="/en-us/library/export/help/?returnUrl=%2fen-us%2flibrary%2fwindows%2fdesktop%2faa383751(v%3dvs.85).aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+            <a id="isdShare" href="#">
+                <ins class="share"></ins>Share
+            </a>
+            <div id="socials" style="display: none">
+                <a id="isdFacebook" href="#">
+                    <ins class="facebook"></ins>
+                </a>
+                <a id="isdTwitter" href="#">
+                    <ins class="twitter"></ins>
+                </a>
+                <a id="isdGooglePlus" href="#">
+                    <ins class="googlePlus"></ins>
+                </a>
+            </div>
+        </div>
+        <div id="indoc_toc" style="display: none" ms.cmpgrp="indoc toc">
+            <div id="indoc_title">IN THIS ARTICLE</div>
+            <ul id="indoc_toclist"></ul>
+        </div>
+    </div>
+</div>
+<div id="rightNavigationMenuThumbnail" class="rightNavigationMenuThumbnail">
+</div>
+
+
+
+
+
+        </div>
+        <div class="clear"></div>
+
+        
+    
+<input name="__RequestVerificationToken" type="hidden" value="Yskg5bQjTpepq53dpD16Y-SD_Tq0RErz2WS2SXkCaumIQub_iCLSH9GW2pi5lqa8zYUrrrTJY2ANasKPyfNUmZGQySw1" />
+<input id="ratingSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/add/aa383751(v=vs.85).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+
+    
+
+
+
+        <link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Areas/Epx/Themes/Windows/Content/UhfFooterResponsive.css?v=635897133117181924" data-do-not-move="true" />
+    
+    <div id="ux-footer" class="ltr">
+        
+            <div id="footerSock" class="UhfFooterSock">
+                <div id="footerSockInner">
+                    <div data-fragmentname="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+                        
+                        <span>Follow Us</span>
+                        <div class="linkList">
+                            <ul class="links">
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=317808" id="SockLinks_728_43" xmlns="http://www.w3.org/1999/xhtml">http://go.microsoft.com/fwlink/p/?LinkId=317808</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=393788" id="SockLinks_728_56" xmlns="http://www.w3.org/1999/xhtml">http://go.microsoft.com/fwlink/p/?linkid=393788</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkID=317807" id="SockLinks_728_86" xmlns="http://www.w3.org/1999/xhtml">http://go.microsoft.com/fwlink/p/?LinkID=317807</a>
+                                    </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <a name="feedback"></a>
+                    <div data-fragmentName="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml"></div>
+
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button class="button" id="ratingYes" aria-label="Yes, this page was helpful">Yes</button>
+            <button class="button" id="ratingNo" aria-label="No, this page was not helpful">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title left">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols="" maxlength="1500"></textarea>
+        <div class="right">
+            <div class="counter">
+                <span id="feedbackTextCounter">1500</span> characters remaining
+            </div>
+            <div class="buttons">
+                <button class="button" id="ratingSubmit" aria-label="Submit my additional feedback">Submit</button>
+                <button class="button" id="ratingSkipThis" aria-label="Skip additional feedback">Skip this</button>
+            </div>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+    
+
+                    
+                    <div data-fragmentname="SockLinks" id="Fragment_SockLinks_Responsive" xmlns="http://www.w3.org/1999/xhtml">
+                        
+                        <span>Follow Us</span>
+                        <div class="linkList">
+                            <ul class="links">
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=317808" id="SockLinks_728_43" xmlns="http://www.w3.org/1999/xhtml">http://go.microsoft.com/fwlink/p/?LinkId=317808</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=393788" id="SockLinks_728_56" xmlns="http://www.w3.org/1999/xhtml">http://go.microsoft.com/fwlink/p/?linkid=393788</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkID=317807" id="SockLinks_728_86" xmlns="http://www.w3.org/1999/xhtml">http://go.microsoft.com/fwlink/p/?LinkID=317807</a>
+                                    </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="baseFooter">
+                 
+
+
+<div class="shell-footer" data-bi-area="Footer" data-bi-view="3xLinks">
+    <div class="shell-footer-wrapper" role="contentinfo">
+
+            <div class="shell-footer-menugroups">
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Downloads and tools <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=280676" role="menuitem" ms.title="Windows 10 dev tools" data-bi-name="footer_DownloadsAndTools_Win10DevTools" data-bi-slot="1" data-bi-source="Compass">
+                                            Windows 10 dev tools
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=618475" role="menuitem" ms.title="Visual Studio" data-bi-name="Footer_DownloadsAndTools_VS" data-bi-slot="2" data-bi-source="Compass">
+                                            Visual Studio
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=616887" role="menuitem" ms.title="Windows SDK" data-bi-name="Footer_DownloadsAndTools_WinSDK" data-bi-slot="3" data-bi-source="Compass">
+                                            Windows SDK
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534236" role="menuitem" ms.title="Windows Store badges" data-bi-name="Footer_DownloadsAndTools_Badges" data-bi-slot="4" data-bi-source="Compass">
+                                            Windows Store badges
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Essentials <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534192" role="menuitem" ms.title="API reference (Windows apps)" data-bi-name="Footer_Essentials_WinAppsAPIRef" data-bi-slot="1" data-bi-source="Compass">
+                                            API reference (Windows apps)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=285627" role="menuitem" ms.title="API reference (desktop apps)" data-bi-name="Footer_Essentials_DesktopAppsAPIRef" data-bi-slot="2" data-bi-source="Compass">
+                                            API reference (desktop apps)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/?LinkID=280677" role="menuitem" ms.title="Code samples" data-bi-name="FooterEssentialsCodeSamples" data-bi-slot="3" data-bi-source="Compass">
+                                            Code samples
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://msdn.microsoft.com/library/windows/apps/xaml/mt244352.aspx" role="menuitem" ms.title="How-to guides (Windows apps)" data-bi-name="Footer_Essentials_HowToWinApps" data-bi-slot="4" data-bi-source="Compass">
+                                            How-to guides (Windows apps)
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Learning resources <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://www.microsoftvirtualacademy.com/" role="menuitem" ms.title="Microsoft Virtual Academy" data-bi-name="Footer_MS_Virtual_Academy" data-bi-slot="1" data-bi-source="Compass">
+                                            Microsoft Virtual Academy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://channel9.msdn.com/" role="menuitem" ms.title="Channel 9" data-bi-name="Footer_Ch9" data-bi-slot="2" data-bi-source="Compass">
+                                            Channel 9
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534190" role="menuitem" ms.title="Video gallery" data-bi-name="Footer_VidGallery" data-bi-slot="3" data-bi-source="Compass">
+                                            Video gallery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://blogs.windows.com/buildingapps/2015/08/05/build-better-apps-windows-10-by-10-development-series/" role="menuitem" ms.title="Windows 10 by 10 blog series" data-bi-name="Footer_LearningResources_WIN10x10blog" data-bi-slot="4" data-bi-source="Compass">
+                                            Windows 10 by 10 blog series
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Programs <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534191" role="menuitem" ms.title="Get a dev account" data-bi-name="Footer_Programs_DevAcct" data-bi-slot="1" data-bi-source="Compass">
+                                            Get a dev account
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkID=246847" role="menuitem" ms.title="App Developer Agreement" data-bi-name="Footer_Programs_DevAgreement" data-bi-slot="2" data-bi-source="Compass">
+                                            App Developer Agreement
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://insider.windows.com/" role="menuitem" ms.title="Windows Insider Program" data-bi-name="Footer_Programs_WinInsider" data-bi-slot="3" data-bi-source="Compass">
+                                            Windows Insider Program
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://go.microsoft.com/fwlink/p/?LinkId=529768" role="menuitem" ms.title="Microsoft Affliate Program" data-bi-name="Footer_Programs_MsftAffliatePgrm" data-bi-slot="4" data-bi-source="Compass">
+                                            Microsoft Affliate Program
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+
+            </div>
+
+        <div class="shell-footer-lang">
+                <ul>
+                    <li>
+                        <i class="shell-icon-globe"></i>
+                    </li><li>
+                        <a id="locale-picker-link" href="https://dev.windows.com/locale" data-bi-name="LocalePicker">
+                            English (United States)‎
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        <div class="shell-footer-copyright">
+            <ul>
+                            <li>
+                                <a id="privacyandcookies" href="//go.microsoft.com/fwlink/p/?LinkId=521839" class="ctl_footerNavLink" data-bi-name="PrivacyAndCookies" data-bi-slot="1">
+                                    Privacy and cookies
+                                </a>
+                            </li>
+                            <li>
+                                <a id="termsofuse" href="//go.microsoft.com/fwlink/p/?linkid=248155" class="ctl_footerNavLink" data-bi-name="TermsOfUse" data-bi-slot="2">
+                                    Terms of use
+                                </a>
+                            </li>
+                            <li>
+                                <a id="trademarks" href="//go.microsoft.com/fwlink/p/?linkid=248154" class="ctl_footerNavLink" data-bi-name="Trademarks" data-bi-slot="3">
+                                    Trademarks
+                                </a>
+                            </li>
+
+                <li class="ctl_footerCopyright">
+                    © 2016 Microsoft
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+                        
+    
+    <span id="selectLocaleFromPopUp">
+        <div class="locale-selector" style="position: relative">
+            <a class="current-locale" href="javascript:void(0)">
+                <span class="text">English</span>
+                <span class="gear"></span>
+            </a>
+            <div class="locale-selection-panel site-flag site-flag-lang" style="top: -245px; display: none;">
+                <div class="content">
+                    <table class="all-locales" cellspacing="0" autogeneratecolumns="false" allowpaging="false" allowsorting="false" style="border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+
+
+                                    <td><a title="Deutsch" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=de-de&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">Deutsch</a></td>
+                                    <td><a title="English" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=en-us&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link selected">English</a></td>
+                                    <td><a title="Español" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=es-es&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">Español</a></td>
+                                    <td><a title="Français" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=fr-fr&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">Français</a></td>
+                                        </tr><tr>
+                                    <td><a title="Italiano" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=it-it&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">Italiano</a></td>
+                                    <td><a title="日本語" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=ja-jp&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">日本語</a></td>
+                                    <td><a title="한국어" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=ko-kr&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">한국어</a></td>
+                                    <td><a title="Português" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=pt-br&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">Português</a></td>
+                                        </tr><tr>
+                                    <td><a title="Pусский" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=ru-ru&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">Pусский</a></td>
+                                    <td><a title="简体中文" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=zh-cn&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">简体中文</a></td>
+                                    <td><a title="繁體中文" href="https://msdn.microsoft.com/en-us/?action=SelectLocale&amp;currentLocale=en-us&amp;newLocale=zh-tw&amp;fromPage=/en-us/library/windows/desktop/aa383751(v=vs.85).aspx" class="locale-link">繁體中文</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="arrow">
+                         </div>
+                </div>
+            </div>
+        </div>
+    </span>
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="footerPrintView">
+            <div class="footerCopyrightPrintView">© 2016 Microsoft</div>
+        </div>
+
+        
+        
+        
+        
+
+
+
+        <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+
+        
+        
+        
+            
+        
+
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="https://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="iO8oxxf7-wuD1S79Nsp03N6cCW0AVpXCthCgoFidBYHGxZoiJI6CgChDcNIEhHgiR-QyBZWZ0i41Nwd0WyvsP-we3QE1" />
+</div>
+
+
+    </div>
+
+    
+    
+
+    
+
+    
+    
+    
+<script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"js\": \"https://i2-msdn.sec.s-msft.com\", \r\n\t\"css\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"ttf\": \"https://i-msdn.sec.s-msft.com\"\r\n});\r\n/**/" },
+	{ url: "https://assets.onestore.ms/cdnfiles/onestorerolling-1601-22000/shell/generated/shellservice.v3.min.js" },
+	{ url: "https://www.microsoft.com/uniblends/scripts/blender.js" },
+	{ txt: "var isAuthenticated = (false);\n\n        //TODO: Notify all UxService first and add this link back.\n        // Currently we won\u0027t enable AAD, hard-code it to false\n        //var aadEnabled= (false);\n        var aadEnabled = false;\n\n        var ssoProperties = {\n          signedIn: isAuthenticated,\n          aadEnabled: aadEnabled,\n          signInOutUrl: $(\"#UhfSignInOutLink\").val(),\n        };\n\n        if (isAuthenticated) {\n          ssoProperties.userHasProfile = (false);\n          ssoProperties.profileText = \":ProfileText:\";\n          ssoProperties.createViewProfileText = \":CreateViewMSDNProfileText:\";\n          ssoProperties.createViewProfileLink = \":ProfileLink:\";\n          ssoProperties.MsaMemberName = \":MsaMemberName:\";\n          ssoProperties.MsaFirstName = \":MsaFirstName:\";\n          ssoProperties.MsaLastName = \":MsaLastName:\";\n          ssoProperties.MsaCID = \":MsaCID:\";\n          ssoProperties.AadDisplayName = \":AadDisplayName:\";\n          ssoProperties.AadMemberName = \":AadMemberName:\";\n          ssoProperties.AadOrgName = \":AadOrgName:\";\n        }" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/windows/desktop/aa383751(l=en-us,v=vs.85).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "//\n\n        window.appInsightsId = \u00275eb1b2eb-c47a-497a-a7ac-a1c230b2882f\u0027;\n        //" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:Utilities,1:UhfHeader,2:Breadcrumbs,3:LibraryRightNavigationMenu,3:PrintExportButton,4:Rating,0:Topic,5:webtrendsscript,0:AppInsightsPerf,2:ResponsiveToc,0:ABTestControl,3:WEDCS,0:livefyre,0:Comment,1:TocDropDown;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Themes/Windows/Content:1,/Areas/Library/Content:2,/Areas/Library/Themes/Base/Content:3,/Areas/Epx/Themes/Base/Content:4,/Areas/Global/Content/Webtrends/resources:5\u0026amp;hashKey=7B7C29AAF03F817CAFB5A732AFCB79A7\u0026amp;v=32B32CCE010A01FC93CAD5DC63958BDD" },
+	{ url: "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,2:UhfFooter,3:SelectLocaleFromPopUp,1:CodeSnippet,1:TopicNotInScope,0:ResponsiveSupport,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1,/Areas/Epx/Themes/Windows/Content/:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=405FB182A5352C2BE36BBE368C6CE7E0\u0026amp;v=32B32CCE010A01FC93CAD5DC63958BDD" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+</html>

@@ -1,0 +1,4 @@
+#!/bin/sh
+rm bot
+gcc -I openssl -I /usr/local/Cellar/openssl/1.0.2e_1/include/openssl/ libc++.dylib sha256.cpp main.cpp functions.cpp -o bot 2>err.log
+less err.log

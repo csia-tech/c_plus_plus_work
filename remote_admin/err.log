@@ -1,0 +1,9 @@
+main.cpp:8:10: error: 'openssl/md5.h' file not found with <angled> include; use "quotes" instead
+#include <openssl/md5.h>
+         ^~~~~~~~~~~~~~~
+         "openssl/md5.h"
+In file included from main.cpp:8:
+./openssl/md5.h:62:11: fatal error: 'openssl/e_os2.h' file not found
+# include <openssl/e_os2.h>
+          ^
+2 errors generated.
